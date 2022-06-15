@@ -7,6 +7,7 @@ imgrotation=0
 pictime=2
 picstrore='/mnt/samba/timelaps/'
 
+path=os.getenv("HOME")
 currentTime = int
 picno=0
 pictime=(pictime*60)-6

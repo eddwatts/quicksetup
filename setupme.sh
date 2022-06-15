@@ -23,6 +23,7 @@ sudo curl -o "/home/safeshutdown.py" "https://raw.githubusercontent.com/eddwatts
 sudo raspi-config nonint do_memory_split 128
 sudo raspi-config nonint do_camera 0
 sudo raspi-config nonint do_ssh 1
+sudo raspi-config nonint do_i2c 1
 sudo raspi-config nonint do_boot_wait 1
 sudo raspi-config nonint do_configure_keyboard gb
 sudo raspi-config nonint do_wifi_country GB

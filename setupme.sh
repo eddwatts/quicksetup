@@ -19,19 +19,24 @@ echo '[Install]' | sudo tee --append /etc/systemd/system/safeshutdown.service
 echo 'WantedBy=multi-user.target' | sudo tee --append /etc/systemd/system/safeshutdown.service
 sudo curl -o "/home/telepotcontrol.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/telepotcontrol.py?id=$RANDOM" -L
 sudo curl -o "/home/safeshutdown.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/safesuntdown.py?id=$RANDOM" -L
+sudo curl -o "/usr/local/bin/piwatcher" "http://omzlo.com/downloads/piwatcher" -L
+sudo chmod a+x /usr/local/bin/piwatcher
+piwatcher watch 30
+piwatcher wake 1
 
 sudo raspi-config nonint do_memory_split 128
 sudo raspi-config nonint do_camera 0
-sudo raspi-config nonint do_ssh 1
-sudo raspi-config nonint do_i2c 1
-sudo raspi-config nonint do_boot_wait 1
+sudo raspi-config nonint do_ssh 0
+sudo raspi-config nonint do_i2c 0
+sudo raspi-config nonint do_boot_wait 0
 sudo raspi-config nonint do_configure_keyboard gb
 sudo raspi-config nonint do_wifi_country GB
 sudo raspi-config nonint do_change_timezone Eurpoe/London
 sudo raspi-config nonint do_change_locale en_GB.UTF-8
+
 sudo apt-get update
 sudo apt-get -y install python3-pip
-pip3 install telepot
+sudo pip3 -q install telepot twython --upgrade
 
 sudo systemctl start safeshutdown    # Runs the script now
 sudo systemctl enable safeshutdown   # Sets the script to run every boot

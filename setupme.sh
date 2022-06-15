@@ -21,8 +21,7 @@ sudo curl -o "/home/telepotcontrol.py" "https://raw.githubusercontent.com/eddwat
 sudo curl -o "/home/safeshutdown.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/safesuntdown.py?id=$RANDOM" -L
 sudo curl -o "/usr/local/bin/piwatcher" "http://omzlo.com/downloads/piwatcher" -L
 sudo chmod a+x /usr/local/bin/piwatcher
-piwatcher watch 30
-piwatcher wake 1
+piwatcher defaults 60 5
 
 sudo raspi-config nonint do_memory_split 128
 sudo raspi-config nonint do_camera 0

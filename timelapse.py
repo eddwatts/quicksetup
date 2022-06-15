@@ -38,12 +38,18 @@ def capture(ab):
     currentTime = int(round(time.time() * 1000))
     img_path=path+"/"+str(picno).zfill(8)+".jpg"
     picno=picno+1
+    if os.path.exists('/home/camlock.ok')
+      time.sleep(5)
+    f = open("/home/camlock.ok", "a")
+    f.write("camera in use")
+    f.close()
     GPIO.output(18, GPIO.LOW)
     GPIO.output(23, GPIO.LOW)
     os.system("libcamera-still -t 5000 -o " + img_path +  " --autofocus -q 100 --rawfull --rotation " + imgrotation + " -n")
     print(img_path)
     GPIO.output(18, GPIO.HIGH)
     GPIO.output(23, GPIO.HIGH)
+    os.remove("/home/camlock.ok")
 GPIO.add_event_detect(24, GPIO.FALLING, callback=capture, bouncetime=1000)
 GPIO.add_event_detect(25, GPIO.RISING, callback=capture, bouncetime=5000)
 while 1:

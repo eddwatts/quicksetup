@@ -25,7 +25,13 @@ def handle(msg):
       os.system("sudo shutdown -h now")
     elif (command == '/photo ' + MyPass + ' ' + piname):
       bot.sendMessage(chat_id, 'Getting photo')
+      if os.path.exists(path+ '/camlock.ok')
+        time.sleep(5)
+      f = open(path+ "/camlock.ok", "a")
+      f.write("camera in use")
+      f.close()
       os.system("libcamera-still -t 2000 -o " + path + "/Pic.jpg --autofocus -q 90 --rawfull --rotation 180 -n")
+      os.remove(path+ "/camlock.ok")
       bot.sendMessage(chat_id, 'sending photo')
       bot.sendPhoto(chat_id, open(path + '/Pic.jpg', 'rb'))
 bot.message_loop(handle)

@@ -40,7 +40,7 @@ def capture(ab):
     img_path=path+"/"+str(picno).zfill(8)+".jpg"
     picno=picno+1
     if os.path.exists(path+ '/camlock.ok')
-      time.sleep(5)
+      time.sleep(6)
     f = open(path+ "/camlock.ok", "a")
     f.write("camera in use")
     f.close()

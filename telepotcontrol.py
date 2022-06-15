@@ -7,7 +7,7 @@ import socket
 bot = telepot.Bot('')
 masterchat=
 MyPass='password'
-path=os.getenv("HOME")
+path='/mnt/ramdisk'
 piname=socket.gethostname().lower()
 def handle(msg):
     chat_id = msg['chat']['id']

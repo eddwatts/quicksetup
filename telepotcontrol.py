@@ -26,7 +26,7 @@ def handle(msg):
     elif (command == '/photo ' + MyPass + ' ' + piname):
       bot.sendMessage(chat_id, 'Getting photo')
       if os.path.exists(path+ '/camlock.ok')
-        time.sleep(5)
+        time.sleep(6)
       f = open(path+ "/camlock.ok", "a")
       f.write("camera in use")
       f.close()

@@ -24,4 +24,5 @@ GPIO.add_event_detect(21, GPIO.FALLING, callback=Shutdown, bouncetime=2000)
 GPIO.add_event_detect(13, GPIO.FALLING, callback=Reboot, bouncetime=2000)
 
 while 1:
-    time.sleep(10)
+    os.system("/usr/local/bin/piwatcher status >> /dev/null")
+    time.sleep(15)

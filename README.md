@@ -9,3 +9,6 @@ sudo raspi-config
 Navigate down to “Performance Options” and then “Overlay File System.” Select “Yes” to both the enable and write-protect questions.
 
 It may take a minute or more while the system works, this is normal. Tab to the “Finish” button and reboot when prompted.
+
+Includes support for:
+https://thepihut.com/products/piwatcher-tb-terminal-block-version

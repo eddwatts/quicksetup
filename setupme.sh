@@ -1,7 +1,9 @@
 sudo apt-get update
 sudo apt-get -y install python3-pip
 pip3 install telepot
-
+sudo mkdir /mnt/ramdisk
+echo 'tmpfs /mnt/ramdisk tmpfs nodev,nosuid,size=20M 0 0' | sudo tee --append /etc/fstab
+sudo mount -a
 echo '[Unit]' | sudo tee --append /etc/systemd/system/telepotcontrol.service
 echo 'Description=My Script' | sudo tee --append /etc/systemd/system/telepotcontrol.service
 echo '' | sudo tee --append /etc/systemd/system/telepotcontrol.service

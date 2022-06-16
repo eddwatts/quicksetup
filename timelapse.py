@@ -6,11 +6,8 @@ import os
 import configparser
 config = configparser.ConfigParser()
 config.read('/boot/settings.ini')
-imgrotation=config['TIMELAPSE']['ImgRotation']
 pictime=config['TIMELAPSE']['PicTime']
 picstrore=config['TIMELAPSE']['PicStrore']
-LCSE=config['TIMELAPSE']['libcamera-still-extra']
-ImgQ=config['TIMELAPSE']['ImgQuality']
 path='/mnt/ramdisk'
 currentTime = int
 picno=0
@@ -54,7 +51,7 @@ def capture(ab):
     GPIO.output(18, GPIO.LOW)
     GPIO.output(23, GPIO.LOW)
     #os.system("libcamera-still -t 5000 -o " + img_path +  " -q " + ImgQ + " --rawfull --rotation " + imgrotation + " -n " + LCSE)
-    os.system("libcamera-still -t 5000 -o " + path + "/Pic.jpg -q " + ImgQ + " --rawfull --rotation " + imgrotation + " -n " + LCSE)
+    os.system("libcamera-still -t 5000 -o " + path + "/Pic.jpg -q " + config['TIMELAPSE']['ImgQuality'] + " --rawfull --rotation " + config['TIMELAPSE']['ImgRotation'] + " -n --denoise" + config['TIMELAPSE']['Ddenoise'] + " " + config['TIMELAPSE']['libcamera-still-extra'])
     cp path+"/Pic.jpg img_path
     print(img_path)
     GPIO.output(18, GPIO.HIGH)

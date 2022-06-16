@@ -1,3 +1,5 @@
+echo 'dtparam=watchdog=on' | sudo tee --append /boot/config.txt
+echo 'dtoverlay=vc4-kms-v3d,cma-128' | sudo tee --append /boot/config.txt
 sudo mkdir /mnt/ramdisk
 echo 'tmpfs /mnt/ramdisk tmpfs nodev,nosuid,size=20M 0 0' | sudo tee --append /etc/fstab
 sudo mount -a
@@ -43,7 +45,6 @@ sudo raspi-config nonint do_change_locale en_GB.UTF-8
 
 #sudo raspi-config nonint do_gldriver G3
 #sudo raspi-config nonint do_glamor 0
-#echo 'dtoverlay=vc4-kms-v3d,cma-128' | sudo tee --append /boot/config.txt
 
 sudo apt-get update
 sudo apt-get -y install python3-pip watchdog

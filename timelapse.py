@@ -10,7 +10,7 @@ imgrotation=config['TIMELAPSE']['ImgRotation']
 pictime=config['TIMELAPSE']['PicTime']
 picstrore=config['TIMELAPSE']['PicStrore']
 LCSE=config['TIMELAPSE']['libcamera-still-extra']
-
+ImgQ=config['TIMELAPSE']['ImgQuality']
 path='/mnt/ramdisk'
 currentTime = int
 picno=0
@@ -53,7 +53,7 @@ def capture(ab):
     f.close()
     GPIO.output(18, GPIO.LOW)
     GPIO.output(23, GPIO.LOW)
-    os.system("libcamera-still -t 5000 -o " + img_path +  " --autofocus -q 100 --rawfull --rotation " + imgrotation + " -n")
+    os.system("libcamera-still -t 5000 -o " + img_path +  " -q " + ImgQ + " --rawfull --rotation " + imgrotation + " -n " + LCSE)
     print(img_path)
     GPIO.output(18, GPIO.HIGH)
     GPIO.output(23, GPIO.HIGH)

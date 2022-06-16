@@ -10,5 +10,18 @@ Navigate down to “Performance Options” and then “Overlay File System.” S
 
 It may take a minute or more while the system works, this is normal. Tab to the “Finish” button and reboot when prompted.
 
-Includes support for:
-https://thepihut.com/products/piwatcher-tb-terminal-block-version
+lsmod | grep wd
+ls -la /dev/watchdog*
+
+
+
+/etc/systemd/system.conf
+
+RuntimeWatchdogSec=2min
+RebootWatchdogSec=1min
+DefaultTimeoutStopSec=10s
+WatchdogDevice
+
+
+#Includes support for: (removed for internal)
+#https://thepihut.com/products/piwatcher-tb-terminal-block-version

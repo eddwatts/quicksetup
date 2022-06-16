@@ -12,6 +12,7 @@ masterchat=config['TELEGRAM']['Masterchat']
 MyPass=config['TELEGRAM']['passme']
 imgrotation=config['TIMELAPSE']['ImgRotation']
 LCSE=config['TIMELAPSE']['libcamera-still-extra']
+ImgQ=config['TELEGRAM']['ImgQuality']
 path='/mnt/ramdisk'
 piname=socket.gethostname().lower()
 def handle(msg):
@@ -35,7 +36,7 @@ def handle(msg):
       f = open(path+ "/camlock.ok", "a")
       f.write("camera in use")
       f.close()
-      os.system("libcamera-still -t 2000 -o " + path + "/Pic.jpg " + LCSE + " -q 90 --rawfull --rotation " + imgrotation + " -n")
+      os.system("libcamera-still -t 2000 -o " + path + "/Pic.jpg -q " + ImgQ + " --rawfull --rotation " + imgrotation + " -n " + LCSE)
       os.remove(path+ "/camlock.ok")
       bot.sendMessage(chat_id, 'sending photo')
       bot.sendPhoto(chat_id, open(path + '/Pic.jpg', 'rb'))

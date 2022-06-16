@@ -25,6 +25,10 @@ sudo curl -o "/boot/settings.ini" "https://raw.githubusercontent.com/eddwatts/qu
 sudo curl -o "/home/install_pivariety_pkgs.sh" "https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/install_script/install_pivariety_pkgs.sh" -L
 chmod +x /home/install_pivariety_pkgs.sh
 
+sudo apt-get update
+sudo apt-get -y install python3-pip watchdog gldriver-test libdrm-amdgpu1 libdrm-nouveau2 libdrm-radeon1 libgl1-mesa-dri libglapi-mesa libllvm11 libsensors-config libsensors5 libvulkan1 libwayland-client0 libx11-xcb1 libxcb-dri3-0 libxcb-present0 libxcb-randr0 libxcb-sync1 libxshmfence1 libz3-4 mesa-vulkan-drivers
+
+
 #/home/install_pivariety_pkgs.sh -p libcamera_dev
 #/home/install_pivariety_pkgs.sh -p libcamera_apps
 #/home/install_pivariety_pkgs.sh -p imx519_kernel_driver
@@ -46,8 +50,6 @@ sudo raspi-config nonint do_change_locale en_GB.UTF-8
 #sudo raspi-config nonint do_gldriver G3
 #sudo raspi-config nonint do_glamor 0
 
-sudo apt-get update
-sudo apt-get -y install python3-pip watchdog
 sudo pip3 -q install telepot twython --upgrade
 echo 'watchdog-device = /dev/watchdog' | sudo tee --append /etc/watchdog.conf
 echo 'watchdog-timeout = 15' | sudo tee --append /etc/watchdog.conf

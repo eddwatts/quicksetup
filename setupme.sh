@@ -50,3 +50,7 @@ sudo systemctl start telepotcontrol    # Runs the script now
 sudo systemctl enable telepotcontrol   # Sets the script to run every boot
 #sudo systemctl enable watchdog
 #sudo systemctl start watchdog
+
+
+#lsmod | grep wd
+#ls -la /dev/watchdog*

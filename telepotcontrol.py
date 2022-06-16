@@ -4,9 +4,12 @@ from datetime import datetime
 import os
 import telepot
 import socket
-bot = telepot.Bot('')
-masterchat=
-MyPass='password'
+import configparser
+config = configparser.ConfigParser()
+config.read('/boot/settings.ini')
+bot = telepot.Bot(config['TELEGRAM']['BOT'])
+masterchat=config['TELEGRAM']['Masterchat']
+MyPass=config['TELEGRAM']['passme']
 path='/mnt/ramdisk'
 piname=socket.gethostname().lower()
 def handle(msg):

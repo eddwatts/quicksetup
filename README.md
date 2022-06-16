@@ -7,19 +7,16 @@ configeration ini file stored on /boot for ease of change while powerd off.
 
 Read-Only Raspberry Pi
 
-sudo raspi-config
-Navigate down to “Performance Options” and then “Overlay File System.” Select “Yes” to both the enable and write-protect questions.
+sudo raspi-config<br>
+Navigate down to “Performance Options” and then “Overlay File System.” Select “Yes” to both the enable and write-protect questions.<br>
+It may take a minute or more while the system works, this is normal. Tab to the “Finish” button and reboot when prompted.<br>
 
-It may take a minute or more while the system works, this is normal. Tab to the “Finish” button and reboot when prompted.
-
-
-watchdog setup with timeout of 15s, max load of 24, wireless interface check, ping check of 1.1.1.1, running in real time.
+watchdog setup with timeout of 15s, max load of 24, wireless interface check, ping check of 1.1.1.1, running in real time.<br>
 watchdog not enabled as default untill checked working on a pi
 
-lsmod | grep wd
-
+lsmod | grep wd<br>
 ls -la /dev/watchdog*
 
-sudo systemctl enable watchdog
-sudo systemctl start watchdog
-sudo systemctl status watchdog
+sudo systemctl enable watchdog<br>
+sudo systemctl start watchdog<br>
+sudo systemctl status watchdog<br>

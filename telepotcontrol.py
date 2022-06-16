@@ -34,7 +34,7 @@ def handle(msg):
         f = open(path+ "/camlock.ok", "a")
         f.write("camera in use")
         f.close()
-        os.system("libcamera-still -t 2000 -o " + path + "/Pic.jpg -q " + config['TELEGRAM']['ImgQuality'] + " --rawfull --rotation " + config['TIMELAPSE']['ImgRotation'] + " -n --denoise" + config['TIMELAPSE']['Ddenoise'] + " " + config['TIMELAPSE']['libcamera-still-extra'])
+        os.system("libcamera-still -t 2000 -o " + path + "/Pic.jpg -q " + config['TELEGRAM']['ImgQuality'] + " --rawfull --rotation " + config['TIMELAPSE']['ImgRotation'] + " -n --denoise" + config['TIMELAPSE']['Denoise'] + " " + config['TIMELAPSE']['libcamera-still-extra'])
         os.remove(path+ "/camlock.ok")
       bot.sendMessage(chat_id, 'sending photo')
       bot.sendPhoto(chat_id, open(path + '/Pic.jpg', 'rb'))

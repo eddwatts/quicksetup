@@ -17,7 +17,7 @@ def handle(msg):
     command = msg['text']
     print('Got command: %s' % command)
     if (command == '/whoiswho'):
-      bot.sendMessage(chat_id, piname + ' ' online')
+      bot.sendMessage(chat_id, piname + ' online')
     elif (command == '/reboot ' + MyPass + ' + piname):
       bot.sendMessage(chat_id,'Rebooting ' + piname)
       time.sleep(1)
@@ -27,7 +27,7 @@ def handle(msg):
       time.sleep(1)
       os.system("sudo shutdown -h now")
     elif (command == '/photo ' + MyPass + ' ' + piname):
-      if (config['TELEGRAM']['UseTimelapse']=='False')
+      if (config['TELEGRAM']['UseTimelapse']=='False'):
         bot.sendMessage(chat_id, 'Getting photo')
         if os.path.exists(path+ '/camlock.ok')
           time.sleep(6)

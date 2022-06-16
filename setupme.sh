@@ -19,9 +19,12 @@ echo '[Install]' | sudo tee --append /etc/systemd/system/safeshutdown.service
 echo 'WantedBy=multi-user.target' | sudo tee --append /etc/systemd/system/safeshutdown.service
 sudo curl -o "/home/telepotcontrol.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/telepotcontrol.py?id=$RANDOM" -L
 sudo curl -o "/home/safeshutdown.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/safesuntdown.py?id=$RANDOM" -L
-sudo curl -o "/usr/local/bin/piwatcher" "http://omzlo.com/downloads/piwatcher" -L
-sudo chmod a+x /usr/local/bin/piwatcher
-piwatcher defaults 60 5
+sudo curl -o "/boot/settings.ini" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/settings.ini?id=$RANDOM" -L
+#sudo curl -o "/usr/local/bin/piwatcher" "http://omzlo.com/downloads/piwatcher" -L
+#sudo chmod a+x /usr/local/bin/piwatcher
+#piwatcher defaults 60 5
+
+
 
 sudo raspi-config nonint do_memory_split 128
 sudo raspi-config nonint do_camera 0

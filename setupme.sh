@@ -20,9 +20,14 @@ echo 'WantedBy=multi-user.target' | sudo tee --append /etc/systemd/system/safesh
 sudo curl -o "/home/telepotcontrol.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/telepotcontrol.py?id=$RANDOM" -L
 sudo curl -o "/home/safeshutdown.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/safesuntdown.py?id=$RANDOM" -L
 sudo curl -o "/boot/settings.ini" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/settings.ini?id=$RANDOM" -L
-#sudo curl -o "/usr/local/bin/piwatcher" "http://omzlo.com/downloads/piwatcher" -L
-#sudo chmod a+x /usr/local/bin/piwatcher
-#piwatcher defaults 60 5
+sudo curl -o "/home/install_pivariety_pkgs.sh" "https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/install_script/install_pivariety_pkgs.sh" -L
+chmod +x /home/install_pivariety_pkgs.sh
+
+#/home/install_pivariety_pkgs.sh -p libcamera_dev
+#/home/install_pivariety_pkgs.sh -p libcamera_apps
+#/home/install_pivariety_pkgs.sh -p imx519_kernel_driver
+#/home/install_pivariety_pkgs.sh -p 64mp_pi_hawk_eye_kernel_driver
+#git clone https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver.git
 
 
 
@@ -35,6 +40,10 @@ sudo raspi-config nonint do_configure_keyboard gb
 sudo raspi-config nonint do_wifi_country GB
 sudo raspi-config nonint do_change_timezone Eurpoe/London
 sudo raspi-config nonint do_change_locale en_GB.UTF-8
+
+#sudo raspi-config nonint do_gldriver G3
+#sudo raspi-config nonint do_glamor 0
+#echo 'dtoverlay=vc4-kms-v3d,cma-128' | sudo tee --append /boot/config.txt
 
 sudo apt-get update
 sudo apt-get -y install python3-pip watchdog

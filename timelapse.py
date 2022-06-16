@@ -53,7 +53,9 @@ def capture(ab):
     f.close()
     GPIO.output(18, GPIO.LOW)
     GPIO.output(23, GPIO.LOW)
-    os.system("libcamera-still -t 5000 -o " + img_path +  " -q " + ImgQ + " --rawfull --rotation " + imgrotation + " -n " + LCSE)
+    #os.system("libcamera-still -t 5000 -o " + img_path +  " -q " + ImgQ + " --rawfull --rotation " + imgrotation + " -n " + LCSE)
+    os.system("libcamera-still -t 5000 -o " + path + "/Pic.jpg -q " + ImgQ + " --rawfull --rotation " + imgrotation + " -n " + LCSE)
+    cp path+"/Pic.jpg img_path
     print(img_path)
     GPIO.output(18, GPIO.HIGH)
     GPIO.output(23, GPIO.HIGH)

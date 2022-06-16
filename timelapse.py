@@ -3,9 +3,13 @@ import RPi.GPIO as GPIO
 import time
 from datetime import datetime
 import os
-imgrotation=0
-pictime=2
-picstrore='/mnt/samba/timelaps/'
+import configparser
+config = configparser.ConfigParser()
+config.read('/boot/settings.ini')
+imgrotation=config['TIMELAPSE']['ImgRotation']
+pictime=config['TIMELAPSE']['PicTime']
+picstrore=config['TIMELAPSE']['PicStrore']
+LCSE=config['TIMELAPSE']['libcamera-still-extra']
 
 path='/mnt/ramdisk'
 currentTime = int
@@ -28,6 +32,9 @@ def capture(ab):
     global picno
     global oldtime
     global path
+    global picstrore
+    global imgrotation
+    global LCSE
     if time.time() - oldtime > pictime + 600:
         print("Reset Image counter and start new timelapes")
         now = datetime.now()

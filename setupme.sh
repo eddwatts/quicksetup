@@ -46,9 +46,8 @@ sudo raspi-config nonint do_configure_keyboard gb
 sudo raspi-config nonint do_wifi_country GB
 sudo raspi-config nonint do_change_timezone Eurpoe/London
 sudo raspi-config nonint do_change_locale en_GB.UTF-8
-
-#sudo raspi-config nonint do_gldriver G3
-#sudo raspi-config nonint do_glamor 0
+sudo raspi-config nonint do_gldriver G2
+sudo raspi-config nonint do_glamor 0
 
 sudo pip3 -q install telepot twython --upgrade
 echo 'watchdog-device = /dev/watchdog' | sudo tee --append /etc/watchdog.conf

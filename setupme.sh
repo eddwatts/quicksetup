@@ -43,6 +43,8 @@ echo 'watchdog-device = /dev/watchdog' | sudo tee --append /etc/watchdog.conf
 echo 'watchdog-timeout = 15' | sudo tee --append /etc/watchdog.conf
 echo 'max-load-1 = 24' | sudo tee --append /etc/watchdog.conf
 echo 'interface = wlan0' | sudo tee --append /etc/watchdog.conf
+#echo 'ping = 1.1.1.1' | sudo tee --append /etc/watchdog.conf
+echo 'realtime = yes' | sudo tee --append /etc/watchdog.conf
 
 sudo systemctl start safeshutdown    # Runs the script now
 sudo systemctl enable safeshutdown   # Sets the script to run every boot

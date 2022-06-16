@@ -48,3 +48,5 @@ sudo systemctl start safeshutdown    # Runs the script now
 sudo systemctl enable safeshutdown   # Sets the script to run every boot
 sudo systemctl start telepotcontrol    # Runs the script now
 sudo systemctl enable telepotcontrol   # Sets the script to run every boot
+#sudo systemctl enable watchdog
+#sudo systemctl start watchdog

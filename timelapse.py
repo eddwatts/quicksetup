@@ -43,7 +43,7 @@ def capture(ab):
     currentTime = int(round(time.time() * 1000))
     img_path=path+"/"+str(picno).zfill(8)+".jpg"
     picno=picno+1
-    if os.path.exists(path+ '/camlock.ok')
+    if os.path.exists(path+ '/camlock.ok'):
       time.sleep(6)
     f = open(path+ "/camlock.ok", "a")
     f.write("camera in use")

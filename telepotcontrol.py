@@ -10,9 +10,6 @@ config.read('/boot/settings.ini')
 bot = telepot.Bot(config['TELEGRAM']['BOT'])
 masterchat=config['TELEGRAM']['Masterchat']
 MyPass=config['TELEGRAM']['passme']
-imgrotation=config['TIMELAPSE']['ImgRotation']
-LCSE=config['TIMELAPSE']['libcamera-still-extra']
-ImgQ=config['TELEGRAM']['ImgQuality']
 path='/mnt/ramdisk'
 piname=socket.gethostname().lower()
 def handle(msg):
@@ -30,16 +27,15 @@ def handle(msg):
       time.sleep(1)
       os.system("sudo shutdown -h now")
     elif (command == '/photo ' + MyPass + ' ' + piname):
-          
-      bot.sendMessage(chat_id, 'Getting photo')
-      if os.path.exists(path+ '/camlock.ok')
-        time.sleep(6)
-      f = open(path+ "/camlock.ok", "a")
-      f.write("camera in use")
-      f.close()
-      os.system("libcamera-still -t 2000 -o " + path + "/Pic.jpg -q " + ImgQ + " --rawfull --rotation " + imgrotation + " -n " + LCSE)
-      os.remove(path+ "/camlock.ok")
-
+      if (config['TELEGRAM']['UseTimelapse']=='False')
+        bot.sendMessage(chat_id, 'Getting photo')
+        if os.path.exists(path+ '/camlock.ok')
+          time.sleep(6)
+        f = open(path+ "/camlock.ok", "a")
+        f.write("camera in use")
+        f.close()
+        os.system("libcamera-still -t 2000 -o " + path + "/Pic.jpg -q " + config['TELEGRAM']['ImgQuality'] + " --rawfull --rotation " + config['TIMELAPSE']['ImgRotation'] + " -n --denoise" + config['TIMELAPSE']['Ddenoise'] + " " + config['TIMELAPSE']['libcamera-still-extra'])
+        os.remove(path+ "/camlock.ok")
       bot.sendMessage(chat_id, 'sending photo')
       bot.sendPhoto(chat_id, open(path + '/Pic.jpg', 'rb'))
 bot.message_loop(handle)

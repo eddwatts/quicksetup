@@ -6,7 +6,7 @@ import os
 import configparser
 config = configparser.ConfigParser()
 config.read('/boot/settings.ini')
-pictime=config['TIMELAPSE']['PicTime']
+pictime=int(config['TIMELAPSE']['PicTime'])
 picstrore=config['TIMELAPSE']['PicStrore']
 path='/mnt/ramdisk'
 currentTime = int

@@ -37,8 +37,12 @@ sudo raspi-config nonint do_change_timezone Eurpoe/London
 sudo raspi-config nonint do_change_locale en_GB.UTF-8
 
 sudo apt-get update
-sudo apt-get -y install python3-pip
+sudo apt-get -y install python3-pip watchdog
 sudo pip3 -q install telepot twython --upgrade
+echo 'watchdog-device = /dev/watchdog' | sudo tee --append /etc/watchdog.conf
+echo 'watchdog-timeout = 15' | sudo tee --append /etc/watchdog.conf
+echo 'max-load-1 = 24' | sudo tee --append /etc/watchdog.conf
+echo 'interface = wlan0' | sudo tee --append /etc/watchdog.conf
 
 sudo systemctl start safeshutdown    # Runs the script now
 sudo systemctl enable safeshutdown   # Sets the script to run every boot

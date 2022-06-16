@@ -29,7 +29,7 @@ def handle(msg):
     elif (command == '/photo ' + MyPass + ' ' + piname):
       if (config['TELEGRAM']['UseTimelapse']=='False'):
         bot.sendMessage(chat_id, 'Getting photo')
-        if os.path.exists(path+ '/camlock.ok')
+        if os.path.exists(path+ '/camlock.ok'):
           time.sleep(6)
         f = open(path+ "/camlock.ok", "a")
         f.write("camera in use")

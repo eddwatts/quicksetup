@@ -1,5 +1,7 @@
 echo '[Unit]' | sudo tee --append /etc/systemd/system/timelapse.service
-echo 'Description=My Script' | sudo tee --append /etc/systemd/system/timelapse.service
+echo 'Description=Timelapse script' | sudo tee --append /etc/systemd/system/timelapse.service
+echo 'After=network-online.target' | sudo tee --append /etc/systemd/system/timelapse.service
+echo 'Wants=network-online.target' | sudo tee --append /etc/systemd/system/timelapse.service
 echo '' | sudo tee --append /etc/systemd/system/timelapse.service
 echo '[Service]' | sudo tee --append /etc/systemd/system/timelapse.service
 echo 'ExecStart=/usr/bin/python3 /home/timelapse.py' | sudo tee --append /etc/systemd/system/timelapse.service

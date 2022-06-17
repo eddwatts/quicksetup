@@ -4,6 +4,7 @@ import time
 from datetime import datetime
 import os
 import configparser
+import syslog
 config = configparser.ConfigParser()
 config.read('/boot/settings.ini')
 pictime=int(config['TIMELAPSE']['PicTime'])
@@ -34,6 +35,7 @@ def capture(ab):
     global imgrotation
     global LCSE
     if time.time() - oldtime > pictime + 600:
+        syslog.syslog("Reset Image counter and start new timelapes")
         print("Reset Image counter and start new timelapes")
         now = datetime.now()
         d1=now.strftime("%Y%m%d%H%M")
@@ -49,10 +51,15 @@ def capture(ab):
     f = open(path1+ "/camlock.ok", "a")
     f.write("camera in use")
     f.close()
+    if os.path.exists(path1+ '/Pic.jpg'):
+        os.remove(path1+ "/Pic.jpg")
     GPIO.output(18, GPIO.LOW)
     GPIO.output(23, GPIO.LOW)
+    syslog.syslog("taking Photo")
     os.system("libcamera-still -t 5000 -o " + path1 + "/Pic.jpg -q " + config['TIMELAPSE']['ImgQuality'] + " --rawfull --rotation " + config['TIMELAPSE']['ImgRotation'] + " -n --denoise " + config['TIMELAPSE']['Denoise'] + " " + config['TIMELAPSE']['libcamera-still-extra'])
+    syslog.syslog("Copy photo to network")
     os.system("cp " + path1 + "/Pic.jpg " +  img_path)
+    syslog.syslog(img_path)
     print(img_path)
     GPIO.output(18, GPIO.HIGH)
     GPIO.output(23, GPIO.HIGH)

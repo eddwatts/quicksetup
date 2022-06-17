@@ -12,6 +12,12 @@ picstrore=config['TIMELAPSE']['PicStrore']
 path1='/mnt/ramdisk'
 currentTime = int
 picno=0
+syslog.syslog("delay startup for network to fix 30")
+time.sleep(10)
+syslog.syslog("delay startup for network to fix 20")
+time.sleep(10)
+syslog.syslog("delay startup for network to fix 10")
+time.sleep(10)
 pictime=(pictime*60)-6
 oldtime = time.time()-(1000+pictime)
 now = datetime.now()

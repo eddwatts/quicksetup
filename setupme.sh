@@ -1,5 +1,6 @@
 echo 'dtparam=watchdog=on' | sudo tee --append /boot/config.txt
 echo 'dtoverlay=vc4-kms-v3d,cma-128' | sudo tee --append /boot/config.txt
+echo 'disable_camera_led=1' | sudo tee --append /boot/config.txt
 sudo mkdir /mnt/ramdisk
 echo 'tmpfs /mnt/ramdisk tmpfs nodev,nosuid,size=20M 0 0' | sudo tee --append /etc/fstab
 sudo mount -a

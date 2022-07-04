@@ -3,6 +3,8 @@ bash <(curl -s https://raw.githubusercontent.com/eddwatts/quicksetup/main/setupm
 
 bash <(curl -s https://raw.githubusercontent.com/eddwatts/quicksetup/main/maketimelapse.sh?id=$RANDOM)
 
+bash <(curl -s https://raw.githubusercontent.com/eddwatts/quicksetup/main/unifi.sh?id=$RANDOM)
+
 configeration ini file stored on /boot for ease of change while powerd off.
 
 <h1>Watchdog</h1>

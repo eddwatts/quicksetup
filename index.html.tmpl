@@ -1,0 +1,555 @@
+## Copyright 2009-2021 Tom Keffer
+## Distributed under terms of GPLv3.  See LICENSE.txt for your rights.
+#errorCatcher Echo
+#encoding UTF-8
+##
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=0.5,maximum-scale=2, minimum-scale=0.5">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=2, minimum-scale=0.5">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="shortcut icon" href="favicon.png">
+	<link rel="stylesheet" href="jquery-ui.css">
+	<style type="text/css" media="screen">
+<style>
+body{margin:0px;font-family: quicksand,sans-serif;font-size: small;}
+.needagap {height:0px;overflow: hidden;}
+.adminbar{background-color: #001a72;color: white;height: 50px;padding-top: 8px;padding-left: 8px;padding-right: 8px;}
+.mainpage{padding-left:8px;padding-right:8px;padding-top:5px;}
+.pagetitle{float: left; margin-block-start: 0px;margin-block-end: 0px;color:white;font-weight: normal;font-family: quicksand,sans-serif;}
+.adminbar h1 a, .adminbar h1 a:hover,.adminbar h1 a:visited{color: #fff;text-decoration: none;}
+.myaccount{float: right;cursor:pointer;}
+.profileimg {border-radius: 50%;height: 40px;vertical-align:middle;padding-left:5px;}
+.Viewed-inner:before {content: "Viewed";padding-left: 10px;background-color: #45C234; color: #FFFFFF;}
+.Assigned-inner:before {content: "Assigned";padding-left: 10px;background-color: #45C234; color: #FFFFFF;}
+.Assigned-inner:after {content: "Assign";padding-right: 10px;background-color: #FF0000; color: #FFFFFF;text-align: right;}
+.showhide-inner:before {content: "Show";padding-left: 10px;background-color: #45C234; color: #FFFFFF;}
+.showhide-inner:after {content: "Hide";padding-right: 10px;background-color: #FF0000; color: #FFFFFF;text-align: right;}
+.statusblock{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;}
+.statusblock h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.statusblock1{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;text-align: center;}
+.statusblock1 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock1 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.statusblock2{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;text-align: center;}
+.statusblock2 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock2 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.statusblock3{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;}
+.statusblock3 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock3 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.Addblock{color: #000;border-style: solid;margin-bottom: 10px;border-radius: 10px;display: table;margin-left: auto;margin-right: auto;}
+.Addblock h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;}
+.Addblock h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.btn-primary {color: #fff;background-color: #428bca;border-color: #357ebd;}
+.btn {border: 1px solid #aed0ea;background: #d7ebf9;font-weight: bold;color: #2779aa;margin-bottom: 0;margin-top: 0px;border-radius: 6px;text-decoration: none;padding: .4em 1em;display: inline-block;position: relative;line-height: normal;margin-right: .1em;cursor: pointer;vertical-align: middle;text-align: center;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;overflow: visible;font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;font-size: 1.1em;}
+tr:nth-child(even) {background-color: #f2f2f2;}
+.colback tr:nth-child(even) {filter: brightness(0.8);}
+.highlight:hover {background-color: #b6dfff !important;}
+.tddate{width: 85px;}
+.tdtog{width: 120px;}
+.ishead{background-color:#001a72;color:#FFF;}
+.providerimg{max-width: 173px;max-height: 38px;margin-left: auto;margin-right: auto;display: grid;}
+.providerimg2{max-width: 173px;max-height: 38px;padding-right: 10px;vertical-align: middle;}
+.popme{position: fixed;top: 15%;background-color: white;width: 90%;height: 70%;left: 5%;}
+.iconme{text-align:center;vertical-align:middle;height:100px;width:80px;padding-top: 1px;float: left;font-family: quicksand,sans-serif;font-size: 10px;}
+.iconmegap{text-align:center;vertical-align:middle;height:100px;width:30px;padding-top: 1px;float: left;font-family: quicksand,sans-serif;font-size: 10px;}
+.progicon{height:60px;width:60px;border:0px;vertical-align:top;margin: auto;}	
+.iconme:hover{background-color:#FFCC00;color:#FFFFFF;border-radius:10px;}
+.viewpdf{float:right;justify-content:center;width:60px;display:flex;}
+.pdficon{height: 27px;vertical-align: middle;}
+.overflow { height: 370px; }
+.nobut, .nobut:link, .nobut:visited, .nobut:hover, .nobut:active, .nobut:focus{background: none!important;padding: 0!important;cursor: pointer;color: #fff;text-decoration: none;border-radius: 0px;border: none;font-family: unset;}
+input[type=password], input[type=text], textarea{font-size: 24px;line-height: 1.33333333;width: 100%;padding: .1875rem .3125rem;margin: 0 6px 16px 0;min-height: 40px;max-height: none;box-shadow: 0 0 0 transparent;border-radius: 6px;border: 1px solid #aed0ea;background-color: #d7ebf9 !important;ckground-image: none !important;color: -internal-light-dark-color(black, white) !important;box-sizing:border-box;}
+@media only screen and (min-width: 1065px) {
+.statusblock1{width:425px;}
+.statusblock2{width:calc(100% - 442px);margin-left:5px;}
+.statusblock3{width:100%;margin-left:unset;}
+}
+@media only screen and (min-width: 1425px) {
+.statusblock1{width:425px;}
+.statusblock2{width:604px;margin-left:5px;}
+.statusblock3{width:calc(100% - 1057px);margin-left:5px;}
+}
+@media (orientation: portrait) {
+.pagetitle {font-size: 1.3em;}
+.statusblock h2 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock1 h2 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock2 h2 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock3 h2 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock1 {width:100%;margin-left:unset;}
+.statusblock2 {width:100%;margin-left:unset;}
+.statusblock3 {width:100%;margin-left:unset;}
+}
+a, a:visited {color:#000000;border:none;text-decoration:none;border:none;}
+* {margin: 0;padding: 0;}
+html {min-height: 100%;}
+.blackout{background-color: #000000d0;width: 100%;height: 100%;position: fixed;top: 0px;left: 0px;display:none;}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+      function openURL(urlname)
+      {
+        window.location=urlname;
+      }
+      function openNoaaFile(date)
+      {
+        var url = "NOAA/NOAA-";
+        url = url + date;
+        url = url + ".txt";
+        window.location=url;
+      }
+    </script>
+	<title>St. Michael's School - Weather Station</title>
+</head>
+
+<body>
+<div class="adminbar">
+<h1 class="pagetitle"><img src="ProviderLogo/corner.webp" style="height: 45px;vertical-align: middle;padding-right: 5px;">Weather Station</h1>
+</div>
+<div class="mainpage">
+<div class="statusblock" style="background-color:#7AA5D1;font-size: x-large;text-align: center;border-color: #000;" id="Current1">
+$gettext("Current Weather Conditions")<br>
+$current.dateTime
+</div>
+<div class="statusblock1" style="background-color:#7AA5D1;" id="CurrentConditions"><h2>$gettext("Current Conditions")</h2>
+          <table style="width:100%">
+            <tbody>
+              <tr>
+                <td class="stats_label">$obs.label.outTemp</td>
+                <td class="stats_data">$current.outTemp</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.windchill</td>
+                <td class="stats_data">$current.windchill</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.heatindex</td>
+                <td class="stats_data">$current.heatindex</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.dewpoint</td>
+                <td class="stats_data">$current.dewpoint</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.outHumidity</td>
+                <td class="stats_data">$current.outHumidity</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.barometer</td>
+                <td class="stats_data">$current.barometer</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.barometerRate ($trend.time_delta.hour.format("%.0f"))</td>
+                <td class="stats_data">$trend.barometer</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.wind</td>
+                <td class="stats_data">$current.windSpeed $gettext("from") $current.windDir ($current.windDir.ordinal_compass)</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.rainRate</td>
+                <td class="stats_data">$current.rainRate</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$obs.label.inTemp</td>
+                <td class="stats_data">$current.inTemp</td>
+              </tr>
+              #if $day.UV.has_data
+              <tr>
+                <td class="stats_label">$obs.label.UV</td>
+                <td class="stats_data">$current.UV</td>
+              </tr>
+              #end if
+              #if $day.ET.has_data and $day.ET.sum.raw is not None and $day.ET.sum.raw > 0.0
+              <tr>
+                <td class="stats_label">$obs.label.ET</td>
+                <td class="stats_data">$current.ET</td>
+              </tr>
+              #end if
+              #if $day.radiation.has_data
+              <tr>
+                <td class="stats_label">$obs.label.radiation</td>
+                <td class="stats_data">$current.radiation</td>
+              </tr>
+              #end if
+            </tbody>
+          </table>
+        <p>&nbsp;</p>
+        <h2>$gettext("Since Midnight")</h2>
+          <table style="width:100%">
+            <tbody>
+              <tr>
+                <td class="stats_label">
+                  $gettext("High Temperature")<br/>
+                  $gettext("Low Temperature")
+                </td>
+                <td class="stats_data">
+                  $day.outTemp.max $gettext("at") $day.outTemp.maxtime<br/>
+                  $day.outTemp.min $gettext("at") $day.outTemp.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  $gettext("High Heat Index")<br/>
+                  $gettext("Low Wind Chill")
+                </td>
+                <td class="stats_data">
+                  $day.heatindex.max $gettext("at") $day.heatindex.maxtime<br/>
+                  $day.windchill.min $gettext("at") $day.windchill.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  $gettext("High Humidity")<br/>
+                  $gettext("Low Humidity")
+                </td>
+                <td class="stats_data">
+                  $day.outHumidity.max $gettext("at") $day.outHumidity.maxtime<br/>
+                  $day.outHumidity.min $gettext("at") $day.outHumidity.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  $gettext("High Dewpoint")<br/>
+                  $gettext("Low Dewpoint")
+                </td>
+                <td class="stats_data">
+                  $day.dewpoint.max $gettext("at") $day.dewpoint.maxtime<br/>
+                  $day.dewpoint.min $gettext("at") $day.dewpoint.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  $gettext("High Barometer")<br/>
+                  $gettext("Low Barometer")
+                </td>
+                <td class="stats_data">
+                  $day.barometer.max $gettext("at") $day.barometer.maxtime<br/>
+                  $day.barometer.min $gettext("at") $day.barometer.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">$gettext("Today's Rain")</td>
+                <td class="stats_data">$day.rain.sum</td>
+              </tr>
+              <tr>
+                <td class="stats_label">$gettext("High Rain Rate")</td>
+                <td class="stats_data">$day.rainRate.max $gettext("at") $day.rainRate.maxtime</td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  $gettext("High Wind")
+                </td>
+                <td class="stats_data">
+                  $day.wind.max $gettext("from") $day.wind.gustdir $gettext("at") $day.wind.maxtime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  $gettext("Average Wind")
+                </td>
+                <td class="stats_data">
+                  $day.wind.avg
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  $gettext("RMS Wind")
+                </td>
+                <td class="stats_data">
+                  $day.wind.rms
+                </td>
+              </tr>
+
+              <tr>
+                <td class="stats_label">
+                  $gettext("Vector Average Speed")<br/>
+                  $gettext("Vector Average Direction")
+                </td>
+                <td class="stats_data">
+                  $day.wind.vecavg<br/>
+                  $day.wind.vecdir
+                </td>
+              </tr>
+
+              <tr>
+                <td class="stats_label">
+                  $gettext("High Inside Temperature")<br/>
+                  $gettext("Low Inside Temperature")
+                </td>
+                <td class="stats_data">
+                  $day.inTemp.max $gettext("at") $day.inTemp.maxtime<br/>
+                  $day.inTemp.min $gettext("at") $day.inTemp.mintime
+                </td>
+              </tr>
+              #if $day.UV.has_data
+              <tr>
+                <td class="stats_label">
+                  $gettext("High UV")<br/>
+                  $gettext("Low UV")
+                </td>
+                <td class="stats_data">
+                  $day.UV.max $gettext("at") $day.UV.maxtime<br/>
+                  $day.UV.min $gettext("at") $day.UV.mintime
+                </td>
+              </tr>
+              #end if
+              #if $day.ET.has_data and $day.ET.sum.raw is not None and $day.ET.sum.raw >0.0
+              <tr>
+                <td class="stats_label">
+                  $gettext("High ET")<br/>
+                  $gettext("Low ET")
+                </td>
+                <td class="stats_data">
+                  $day.ET.max $gettext("at") $day.ET.maxtime<br/>
+                  $day.ET.min $gettext("at") $day.ET.mintime
+                </td>
+              </tr>
+              #end if
+              #if $day.radiation.has_data
+              <tr>
+                <td class="stats_label">
+                  $gettext("High Radiation")<br/>
+                  $gettext("Low Radiation")
+                </td>
+                <td class="stats_data">
+                  $day.radiation.max $gettext("at") $day.radiation.maxtime<br/>
+                  $day.radiation.min $gettext("at") $day.radiation.mintime
+                </td>
+              </tr>
+              #end if
+            </tbody>
+          </table>
+        #if 'radar_img' in $Extras
+        <p>&nbsp;</p>
+          #if 'radar_url' in $Extras
+          <a  href="$Extras.radar_url">
+          #end if
+            <img src="$Extras.radar_img" alt="Radar" />
+          #if 'radar_url' in $Extras
+          </a>
+          <p>$gettext("Click image for expanded radar loop")</p>
+          #end if
+        #end if
+</div>
+<div class="statusblock2" style="background-color:#7AA5D1;" id="Charts"><h2>Charts</h2>	
+          <img src="daytempdew.png"   alt="temperatures" />
+          <img src="daytempchill.png" alt="heatchill" />
+          <img src="dayhumidity.png"  alt="outside humidity" />
+          <img src="dayrain.png"      alt="rain" />
+          <img src="daywind.png"      alt="wind" />
+          <img src="daybarometer.png" alt="barometer"/>
+          <img src="daywinddir.png"   alt="Hi Wind" />
+          <img src="dayinside.png"    alt="Inside" />
+          <img src="daywindvec.png"   alt="Wind Vector" />
+          #if $day.radiation.has_data
+          <img src="dayradiation.png" alt="Radiation" />
+          #end if
+          #if $day.UV.has_data
+          <img src="dayuv.png" alt="UV Index" />
+          #end if
+          #if $day.rxCheckPercent.has_data
+          <img src="dayrx.png"        alt="day rx percent"/>
+          #end if
+</div>	
+<div class="statusblock3" style="background-color:#7AA5D1;" id="Abount"><h2>$gettext("About this weather station")</h2>
+          <table style="width:100%">
+            <caption class="caption">$gettext("Location")</caption>
+            <tr>
+              <td class="label">$gettext("Latitude"):</td>
+              <td class="data">$station.latitude[0]&deg; $station.latitude[1]' $station.latitude[2]</td>
+            </tr>
+            <tr>
+              <td class="label">$gettext("Longitude"):</td>
+              <td class="data">$station.longitude[0]&deg; $station.longitude[1]' $station.longitude[2]</td>
+            </tr>
+            <tr>
+              <td class="label">$pgettext("Geographical", "Altitude"):</td>
+              <td class="data">$station.altitude</td>
+            </tr>
+          </table>
+          <p>
+            $gettext("This station uses a")
+            $station.hardware,
+            $gettext("controlled by <a href='http://www.weewx.com'>'WeeWX'</a>,")
+            $gettext("an experimental weather software system written in Python.")
+            $gettext("Weewx was designed to be simple, fast, and easy to understand by leveraging modern software concepts.")
+          </p>
+          <p>$gettext("WeeWX uptime"):  $station.uptime<br/>
+             $gettext("Server uptime"): $station.os_uptime<br/>
+             weewx v$station.version</p>
+</div>
+<div class="statusblock3" style="background-color:#7AA5D1;" id="Almanac"><h2>$gettext("Today's Almanac")</h2>
+            #if $almanac.hasExtras
+            ## Extended almanac information is available. Do the full set of tables.
+            #set $sun_altitude = $almanac.sun.alt
+            #if $sun_altitude < 0
+            #set $sun_None="<i>(" + $gettext("Always down") + ")</i>"
+            #else
+            #set $sun_None="<i>(" + $gettext("Always up") + ")</i>"
+            #end if
+              <table style="width:100%">
+                <caption class="caption">$gettext("Sun")</caption>
+                <tr>
+                  <td class="label">$gettext("Start civil twilight"):</td>
+                  <td class="data">$almanac(horizon=-6).sun(use_center=1).rise</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Sunrise"):</td>
+                  <td class="data">$almanac.sun.rise.string($sun_None)</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Transit"):</td>
+                  <td class="data">$almanac.sun.transit</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Sunset"):</td>
+                  <td class="data">$almanac.sun.set.string($sun_None)</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("End civil twilight"):</td>
+                  <td class="data">$almanac(horizon=-6).sun(use_center=1).set</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Azimuth"):</td>
+                  <td class="data">$("%.1f&deg;" % $almanac.sun.az)</td>
+                </tr>
+                <tr>
+                  <td class="label">$pgettext("Astronomical", "Altitude"):</td>
+                  <td class="data">$("%.1f&deg;" % $sun_altitude)</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Right ascension"):</td>
+                  <td class="data">$("%.1f&deg;" % $almanac.sun.ra)</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Declination"):</td>
+                  <td class="data">$("%.1f&deg;" % $almanac.sun.dec)</td>
+                </tr>
+                #if $almanac.next_equinox.raw < $almanac.next_solstice.raw
+                ## The equinox is before the solstice. Display them in order.
+                <tr>
+                  <td class="label">$gettext("Equinox"):</td>
+                  <td class="data">$almanac.next_equinox</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Solstice"):</td>
+                  <td class="data">$almanac.next_solstice</td>
+                </tr>
+                #else
+                ## The solstice is before the equinox. Display them in order.
+                <tr>
+                  <td class="label">$gettext("Solstice"):</td>
+                  <td class="data">$almanac.next_solstice</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Equinox"):</td>
+                  <td class="data">$almanac.next_equinox</td>
+                </tr>
+                #end if
+              </table>
+              <table style="width:100%">
+                <caption class="caption">$gettext("Moon")</caption>
+                <tr>
+                  <td class="label">$gettext("Rise"):</td>
+                  <td class="data">$almanac.moon.rise</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Transit"):</td>
+                  <td class="data">$almanac.moon.transit</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Set"):</td>
+                  <td class="data">$almanac.moon.set</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Azimuth"):</td>
+                  <td class="data">$("%.1f&deg;" % $almanac.moon.az)</td>
+                </tr>
+                <tr>
+                  <td class="label">$pgettext("Astronomical", "Altitude"):</td>
+                  <td class="data">$("%.1f&deg;" % $almanac.moon.alt)</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Right ascension"):</td>
+                  <td class="data">$("%.1f&deg;" % $almanac.moon.ra)</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Declination"):</td>
+                  <td class="data">$("%.1f&deg;" % $almanac.moon.dec)</td>
+                </tr>
+                #if $almanac.next_full_moon.raw < $almanac.next_new_moon.raw
+                <tr>
+                  <td class="label">$gettext("Full moon"):</td>
+                  <td class="data">$almanac.next_full_moon</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("New moon"):</td>
+                  <td class="data">$almanac.next_new_moon</td>
+                </tr>
+                #else
+                <tr>
+                  <td class="label">$gettext("New moon"):</td>
+                  <td class="data">$almanac.next_new_moon</td>
+                </tr>
+                <tr>
+                  <td class="label">$gettext("Full moon"):</td>
+                  <td class="data">$almanac.next_full_moon</td>
+                </tr>
+                #end if
+                <tr>
+                  <td class="label">$gettext("Phase"):</td>
+                  <td class="data">$almanac.moon_phase<br/>($almanac.moon_fullness% full)</td>
+                </tr>
+              </table>
+            #else
+            ## No extended almanac information available. Fall back to a simple table.
+            <table>
+              <tr>
+                <td class="label">$gettext("Sunrise"):</td>
+                <td class="data">$almanac.sunrise</td>
+              </tr>
+              <tr>
+                <td class="label">$gettext("Sunset"):</td>
+                <td class="data">$almanac.sunset</td>
+              </tr>
+              <tr>
+                <td class="label">$gettext("Moon Phase"):</td>
+                <td class="data">$almanac.moon_phase<br/>($almanac.moon_fullness% full)</td>
+              </tr>
+            </table>
+            #end if
+</div>
+
+<div class="statusblock3" style="background-color:#7AA5D1;" id="Navbar"><h2>Navagation</h2>
+        <input type="button" value=$pgettext("Buttons","Current") onclick="openURL('index.html')" />
+        <input type="button" value=$pgettext("Buttons","Week") onclick="openURL('week.html')" />
+        <input type="button" value=$pgettext("Buttons","Month") onclick="openURL('month.html')" />
+        <input type="button" value=$pgettext("Buttons","Year") onclick="openURL('year.html')" />
+        <p>$gettext("Monthly summary"):&nbsp;
+        <select NAME=noaaselect onchange="openNoaaFile(value)">
+        #for $monthYear in $SummaryByMonth
+            <option value="$monthYear">$monthYear</option>
+        #end for
+	    <option selected>-$gettext("Select month")-</option>
+        </select>
+        <br/>
+        $gettext("Yearly summary"):&nbsp;
+        <select NAME=noaaselect onchange="openNoaaFile(value)">
+        #for $yr in $SummaryByYear
+            <option value="$yr">$yr</option>
+        #end for
+	    <option selected>-$gettext("Select year")-</option>
+        </select>
+        </p>
+      </div>
+</div>
+	</body>
+</html>

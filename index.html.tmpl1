@@ -28,16 +28,16 @@ body{margin:0px;font-family: quicksand,sans-serif;font-size: small;}
 .showhide-inner:before {content: "Show";padding-left: 10px;background-color: #45C234; color: #FFFFFF;}
 .showhide-inner:after {content: "Hide";padding-right: 10px;background-color: #FF0000; color: #FFFFFF;text-align: right;}
 .statusblock{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;}
-.statusblock h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;text-align:left;}
 .statusblock h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
 .statusblock1{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;text-align: center;}
-.statusblock1 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock1 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;text-align:left;}
 .statusblock1 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
 .statusblock2{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;text-align: center;}
-.statusblock2 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock2 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;text-align:left;}
 .statusblock2 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
 .statusblock3{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;}
-.statusblock3 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock3 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;text-align:left;}
 .statusblock3 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
 .Addblock{color: #000;border-style: solid;margin-bottom: 10px;border-radius: 10px;display: table;margin-left: auto;margin-right: auto;}
 .Addblock h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;}

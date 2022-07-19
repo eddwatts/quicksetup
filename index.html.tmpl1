@@ -338,23 +338,23 @@ $current.dateTime
         #end if
 </div>
 <div class="statusblock2" style="background-color:#7AA5D1;" id="Charts"><h2>Charts</h2>	
-          <img src="daytempdew.png"   alt="temperatures" />
-          <img src="daytempchill.png" alt="heatchill" />
-          <img src="dayhumidity.png"  alt="outside humidity" />
-          <img src="dayrain.png"      alt="rain" />
-          <img src="daywind.png"      alt="wind" />
-          <img src="daybarometer.png" alt="barometer"/>
-          <img src="daywinddir.png"   alt="Hi Wind" />
-          <img src="dayinside.png"    alt="Inside" />
-          <img src="daywindvec.png"   alt="Wind Vector" />
+          <img src="daytempdew.png?342033402"   alt="temperatures" />
+          <img src="daytempchill.png?342032402" alt="heatchill" />
+          <img src="dayhumidity.png?342033402"  alt="outside humidity" />
+          <img src="dayrain.png?342033402"      alt="rain" />
+          <img src="daywind.png?342033402"      alt="wind" />
+          <img src="daybarometer.png?342032402" alt="barometer"/>
+          <img src="daywinddir.png?342033402"   alt="Hi Wind" />
+          <img src="dayinside.png?342033402"    alt="Inside" />
+          <img src="daywindvec.png?342033402"   alt="Wind Vector" />
           #if $day.radiation.has_data
-          <img src="dayradiation.png" alt="Radiation" />
+          <img src="dayradiation.png?342033402" alt="Radiation" />
           #end if
           #if $day.UV.has_data
-          <img src="dayuv.png" alt="UV Index" />
+          <img src="dayuv.png?342038402" alt="UV Index" />
           #end if
           #if $day.rxCheckPercent.has_data
-          <img src="dayrx.png"        alt="day rx percent"/>
+          <img src="dayrx.png?342031402"        alt="day rx percent"/>
           #end if
 </div>	
 <div class="statusblock3" style="background-color:#7AA5D1;" id="Abount"><h2>About this weather station</h2>

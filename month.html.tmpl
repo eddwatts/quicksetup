@@ -1,0 +1,467 @@
+#errorCatcher Echo
+##
+## Specifying an encoding of UTF-8 is usually safe, but if your text is 
+## actually in Latin-1, then you should replace the string "UTF-8" with "latin-1"
+## If you do this, you should also change the 'Content-Type' metadata below.
+#encoding UTF-8
+##
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=2, minimum-scale=0.5">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<style>
+body{margin:0px;font-family: quicksand,sans-serif;font-size: small;}
+.needagap {height:0px;overflow: hidden;}
+.adminbar{background-color: #001a72;color: white;height: 50px;padding-top: 8px;padding-left: 8px;padding-right: 8px;}
+.mainpage{padding-left:8px;padding-right:8px;padding-top:5px;}
+.pagetitle{float: left; margin-block-start: 0px;margin-block-end: 0px;color:white;font-weight: normal;font-family: quicksand,sans-serif;}
+.adminbar h1 a, .adminbar h1 a:hover,.adminbar h1 a:visited{color: #fff;text-decoration: none;}
+.myaccount{float: right;cursor:pointer;}
+.profileimg {border-radius: 50%;height: 40px;vertical-align:middle;padding-left:5px;}
+.Viewed-inner:before {content: "Viewed";padding-left: 10px;background-color: #45C234; color: #FFFFFF;}
+.Assigned-inner:before {content: "Assigned";padding-left: 10px;background-color: #45C234; color: #FFFFFF;}
+.Assigned-inner:after {content: "Assign";padding-right: 10px;background-color: #FF0000; color: #FFFFFF;text-align: right;}
+.showhide-inner:before {content: "Show";padding-left: 10px;background-color: #45C234; color: #FFFFFF;}
+.showhide-inner:after {content: "Hide";padding-right: 10px;background-color: #FF0000; color: #FFFFFF;text-align: right;}
+.statusblock{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;}
+.statusblock h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;text-align:left;}
+.statusblock h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.statusblock1{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;text-align: center;}
+.statusblock1 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;text-align:left;}
+.statusblock1 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.statusblock2{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;text-align: center;}
+.statusblock2 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;text-align:left;}
+.statusblock2 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.statusblock3{color: #000;border-style:solid;margin-bottom:5px;border-radius: 10px;float: left;width:100%;overflow: hidden;}
+.statusblock3 h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;height:35px;font-weight: normal;font-family: quicksand,sans-serif;text-align:left;}
+.statusblock3 h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.Addblock{color: #000;border-style: solid;margin-bottom: 10px;border-radius: 10px;display: table;margin-left: auto;margin-right: auto;}
+.Addblock h2{color: #fff;background-color: #001a72;margin-block-start: 0px;margin-block-end: 0px;padding-top: 5px;padding-left: 5px;}
+.Addblock h2 a, .statusblock h2 a:hover,.statusblock h2 a:visited{color: #fff;text-decoration: none;}
+.btn-primary {color: #fff;background-color: #428bca;border-color: #357ebd;}
+.btn {border: 1px solid #aed0ea;background: #d7ebf9;font-weight: bold;color: #2779aa;margin-bottom: 0;margin-top: 0px;border-radius: 6px;text-decoration: none;padding: .4em 1em;display: inline-block;position: relative;line-height: normal;margin-right: .1em;cursor: pointer;vertical-align: middle;text-align: center;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;overflow: visible;font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;font-size: 1.1em;}
+tr:nth-child(even) {background-color: #f2f2f2;}
+.colback tr:nth-child(even) {filter: brightness(0.8);}
+.highlight:hover {background-color: #b6dfff !important;}
+.tddate{width: 85px;}
+.tdtog{width: 120px;}
+.ishead{background-color:#001a72;color:#FFF;}
+.providerimg{max-width: 173px;max-height: 38px;margin-left: auto;margin-right: auto;display: grid;}
+.providerimg2{max-width: 173px;max-height: 38px;padding-right: 10px;vertical-align: middle;}
+.popme{position: fixed;top: 15%;background-color: white;width: 90%;height: 70%;left: 5%;}
+.iconme{text-align:center;vertical-align:middle;height:100px;width:80px;padding-top: 1px;float: left;font-family: quicksand,sans-serif;font-size: 10px;}
+.iconmegap{text-align:center;vertical-align:middle;height:100px;width:30px;padding-top: 1px;float: left;font-family: quicksand,sans-serif;font-size: 10px;}
+.progicon{height:60px;width:60px;border:0px;vertical-align:top;margin: auto;}	
+.iconme:hover{background-color:#FFCC00;color:#FFFFFF;border-radius:10px;}
+.viewpdf{float:right;justify-content:center;width:60px;display:flex;}
+.pdficon{height: 27px;vertical-align: middle;}
+.overflow { height: 370px; }
+.nobut, .nobut:link, .nobut:visited, .nobut:hover, .nobut:active, .nobut:focus{background: none!important;padding: 0!important;cursor: pointer;color: #fff;text-decoration: none;border-radius: 0px;border: none;font-family: unset;}
+input[type=password], input[type=text], textarea{font-size: 24px;line-height: 1.33333333;width: 100%;padding: .1875rem .3125rem;margin: 0 6px 16px 0;min-height: 40px;max-height: none;box-shadow: 0 0 0 transparent;border-radius: 6px;border: 1px solid #aed0ea;background-color: #d7ebf9 !important;ckground-image: none !important;color: -internal-light-dark-color(black, white) !important;box-sizing:border-box;}
+@media only screen and (min-width: 1065px) {
+.statusblock1{width:425px;}
+.statusblock2{width:calc(100% - 442px);margin-left:5px;}
+.statusblock3{width:100%;margin-left:unset;}
+}
+@media only screen and (min-width: 1425px) {
+.statusblock1{width:425px;}
+.statusblock2{width:604px;margin-left:5px;}
+.statusblock3{width:calc(100% - 1057px);margin-left:5px;}
+}
+@media (orientation: portrait) {
+.pagetitle0 {font-size: 1.3em;}
+.statusblock h20 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock1 h20 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock2 h20 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock3 h20 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock1 {width:100%;margin-left:unset;}
+.statusblock2 {width:100%;margin-left:unset;}
+.statusblock3 {width:100%;margin-left:unset;}
+}
+a, a:visited {color:#000000;border:none;text-decoration:none;border:none;}
+* {margin: 0;padding: 0;}
+html {min-height: 100%;}
+.blackout{background-color: #000000d0;width: 100%;height: 100%;position: fixed;top: 0px;left: 0px;display:none;}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+      function openURL(urlname)
+      {
+        window.location=urlname;
+      }
+      function openNoaaFile(date)
+      {
+        var url = "NOAA/NOAA-";
+        url = url + date;
+        url = url + ".txt";
+        window.location=url;
+      }
+      setTimeout(function() { window.location.reload(true); }, 300000);
+    </script>
+	<title>St. Michael's School - Weather Station</title>
+</head>
+
+<body>
+<div class="adminbar">
+<h1 class="pagetitle"><img src="ProviderLogo/corner.webp" style="height: 45px;vertical-align: middle;padding-right: 5px;">Weather Station</h1>
+</div>
+<div class="mainpage">
+<div class="statusblock" style="background-color:#7AA5D1;font-size: x-large;text-align: center;border-color: #000;" id="Current1">
+Monthly Weather Summary<br>
+$current.dateTime
+</div>
+<div class="statusblock1" style="background-color:#7AA5D1;" id="CurrentConditions"><h2>This Month</h2>
+          <table style="width:100%">
+            <tbody>
+              <tr>
+                <td class="stats_label">
+                  High Temperature<br/>
+                  Low Temperature
+                </td>
+                <td class="stats_data">
+                  $month.outTemp.max at $month.outTemp.maxtime<br/>
+                  $month.outTemp.min at $month.outTemp.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Heat Index
+                </td>
+                <td class="stats_data"> 
+                  $month.heatindex.max at $month.heatindex.maxtime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label"> 
+                  Low Wind Chill
+                </td>
+                <td class="stats_data"> 
+                  $month.windchill.min at $month.windchill.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Humidity<br/>
+                  Low Humidity
+                </td>
+                <td class="stats_data">
+                  $month.outHumidity.max $month.outHumidity.maxtime<br/>
+                  $month.outHumidity.min $month.outHumidity.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Dewpoint<br/>
+                  Low Dewpoint
+                </td>
+                <td class="stats_data">
+                  $month.dewpoint.max $month.dewpoint.maxtime<br/>
+                  $month.dewpoint.min $month.dewpoint.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Barometer<br/>
+                  Low Barometer
+                </td>
+                <td class="stats_data">
+                  $month.barometer.max at $month.barometer.maxtime<br/>
+                  $month.barometer.min at $month.barometer.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  Rain Total
+                </td>
+                <td class="stats_data">
+                  $month.rain.sum
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label"> 
+                  High Rain Rate
+                </td>
+                <td class="stats_data">
+                  $month.rainRate.max at $month.rainRate.maxtime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Wind Speed
+                </td>
+                <td class="stats_data">
+                  $month.wind.max from $month.wind.gustdir at $month.wind.maxtime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  Average Wind
+                </td>
+                <td class="stats_data">
+                  $month.wind.avg
+                </td>
+              </tr>
+              
+              <tr>
+                <td class="stats_label">
+                  RMS Wind
+                </td>
+                <td class="stats_data">
+                  $month.wind.rms
+                </td>
+              </tr>
+
+              <tr>
+                <td class="stats_label">
+                  Vector Average Speed<br/>
+                  Vector Average Direction
+                </td>
+                <td class="stats_data">
+                  $month.wind.vecavg<br/>
+                  $month.wind.vecdir
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Inside Temperature<br/>
+                  Low Inside Temperature
+                </td>
+                <td class="stats_data">
+                  $month.inTemp.max at $month.inTemp.maxtime<br/>
+                  $month.inTemp.min at $month.inTemp.mintime
+                </td>
+              </tr>
+              #if $month.UV.has_data
+              <tr>
+                <td class="stats_label">
+                  High UV<br/>
+                  Low UV
+                </td>
+                <td class="stats_data">
+                  $month.UV.max at $month.UV.maxtime<br/>
+                  $month.UV.min at $month.UV.mintime
+                </td>
+              </tr>
+              #end if
+              #if $month.ET.has_data and $month.ET.sum.raw > 0.0
+              <tr>
+                <td class="stats_label">
+                  High ET<br/>
+                  Low ET
+                </td>
+                <td class="stats_data">
+                  $month.ET.max at $month.ET.maxtime<br/>
+                  $month.ET.min at $month.ET.mintime
+                </td>
+              </tr>
+              #end if
+              #if $month.radiation.has_data
+              <tr>
+                <td class="stats_label">
+                  High Radiation<br/>
+                  Low Radiation
+                </td>
+                <td class="stats_data">
+                  $month.radiation.max at $month.radiation.maxtime<br/>
+                  $month.radiation.min at $month.radiation.mintime
+                </td>
+              </tr>
+              #end if
+            </tbody>
+          </table>
+        <p>&nbsp;</p>
+        <h2>Calendar Year</h2>
+          <table style="width:100%">
+            <tbody>
+              <tr>
+                <td class="stats_label">
+                  High Temperature<br/>
+                  Low Temperature
+                </td>
+                <td class="stats_data">
+                  $year.outTemp.max at $year.outTemp.maxtime<br/>
+                  $year.outTemp.min at $year.outTemp.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Heat Index
+                </td>
+                <td class="stats_data"> 
+                  $year.heatindex.max at $year.heatindex.maxtime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label"> 
+                  Low Wind Chill
+                </td>
+                <td class="stats_data"> 
+                  $year.windchill.min at $year.windchill.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Humidity<br/>
+                  Low Humidity
+                </td>
+                <td class="stats_data">
+                  $year.outHumidity.max at $year.outHumidity.maxtime<br/>
+                  $year.outHumidity.min at $year.outHumidity.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Dewpoint<br/>
+                  Low Dewpoint
+                </td>
+                <td class="stats_data">
+                  $year.dewpoint.max at $year.dewpoint.maxtime<br/>
+                  $year.dewpoint.min at $year.dewpoint.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Barometer<br/>
+                  Low Barometer
+                </td>
+                <td class="stats_data">
+                  $year.barometer.max at $year.barometer.maxtime<br/>
+                  $year.barometer.min at $year.barometer.mintime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  Rain Total
+                </td>
+                <td class="stats_data">
+                  $year.rain.sum
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label"> 
+                  High Rain Rate
+                </td>
+                <td class="stats_data">
+                  $year.rainRate.max at $year.rainRate.maxtime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Wind Speed
+                </td>
+                <td class="stats_data">
+                  $year.wind.max from $year.wind.gustdir at $year.wind.maxtime
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  Average Wind
+                </td>
+                <td class="stats_data">
+                  $year.wind.avg
+                </td>
+              </td>
+              
+              <tr>
+                <td class="stats_label">
+                  RMS Wind
+                </td>
+                <td class="stats_data">
+                  $year.wind.rms
+                </td>
+              </tr>
+
+              <tr>
+                <td class="stats_label">
+                  Vector Average Speed<br/>
+                  Vector Average Direction
+                </td>
+                <td class="stats_data">
+                  $year.wind.vecavg<br/>
+                  $year.wind.vecdir
+                </td>
+              </tr>
+              <tr>
+                <td class="stats_label">
+                  High Inside Temperature<br/>
+                  Low Inside Temperature
+                </td>
+                <td class="stats_data">
+                  $year.inTemp.max at $year.inTemp.maxtime<br/>
+                  $year.inTemp.min at $year.inTemp.mintime
+                </td>
+              </tr>
+              #if $year.UV.has_data
+              <tr>
+                <td class="stats_label">
+                  High UV<br/>
+                  Low UV
+                </td>
+                <td class="stats_data">
+                  $year.UV.max at $year.UV.maxtime<br/>
+                  $year.UV.min at $year.UV.mintime
+                </td>
+              </tr>
+              #end if
+              #if $year.ET.has_data and $year.ET.sum.raw >0.0
+              <tr>
+                <td class="stats_label">
+                  High ET<br/>
+                  Low ET
+                </td>
+                <td class="stats_data">
+                  $year.ET.max at $year.ET.maxtime<br/>
+                  $year.ET.min at $year.ET.mintime
+                </td>
+              </tr>
+              #end if
+              #if $year.radiation.has_data
+              <tr>
+                <td class="stats_label">
+                  High Radiation<br/>
+                  Low Radiation
+                </td>
+                <td class="stats_data">
+                  $year.radiation.max at $year.radiation.maxtime<br/>
+                  $year.radiation.min at $year.radiation.mintime
+                </td>
+              </tr>
+              #end if
+            </tbody>
+          </table>
+</div>
+<div class="statusblock2" style="background-color:#7AA5D1;" id="Charts"><h2>Monthly Statistics and Plots</h2>	
+          <img src="monthtempdew.png?342033402" alt="temperatures" />
+          <img src="monthtempchill.png?342033402" alt="heatchill" />
+          <img src="monthhumidity.png?342033402"  alt="outside humidity" />
+          <img src="monthrain.png?342033402" alt="rain" />
+          <img src="monthwind.png?342033402" alt="wind" />
+          <img src="monthbarometer.png?342033402" alt="barometer"/>
+          <img src="monthwinddir.png?342033402" alt="Hi Wind" />
+          <img src="monthinside.png?342033402" alt="Inside" />
+          <img src="monthwindvec.png?342033402" alt="Wind Vector" />
+          #if $month.radiation.has_data
+          <img src="monthradiation.png?342033402" alt="Radiation" />
+          #end if
+          #if $month.UV.has_data
+          <img src="monthuv.png?342033402" alt="UV Index" />
+          #end if
+          #if $month.rxCheckPercent.has_data
+          <img src="monthrx.png?342033402" alt="month rx percent"/>
+          #end if
+            #end if
+</div>
+<div class="statusblock3" style="background-color:#7AA5D1;text-align: center;" id="Navbar"><h2>Navagation</h2>
+        <input type="button" value="   Current   " onclick="openURL('index.html')" />
+        <input type="button" value="    Week     " onclick="openURL('week.html')" />
+        <input type="button" value="    Month    " onclick="openURL('month.html')" />
+        <input type="button" value="    Year     " onclick="openURL('year.html')" />
+</div>
+</div>
+	</body>
+</html>

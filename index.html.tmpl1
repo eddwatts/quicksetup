@@ -107,6 +107,7 @@ html {min-height: 100%;}
         url = url + ".txt";
         window.location=url;
       }
+      setTimeout(function() { window.location.reload(true); }, 300000);
     </script>
 	<title>St. Michael's School - Weather Station</title>
 </head>
@@ -183,7 +184,6 @@ $current.dateTime
               #end if
             </tbody>
           </table>
-        </div>
         <p>&nbsp;</p>
         <h2>Since Midnight</h2>
           <table style="width:100%">

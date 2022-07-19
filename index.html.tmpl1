@@ -73,11 +73,11 @@ input[type=password], input[type=text], textarea{font-size: 24px;line-height: 1.
 .statusblock3{width:calc(100% - 1057px);margin-left:5px;}
 }
 @media (orientation: portrait) {
-.pagetitle {font-size: 1.3em;}
-.statusblock h2 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
-.statusblock1 h2 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
-.statusblock2 h2 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
-.statusblock3 h2 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.pagetitle0 {font-size: 1.3em;}
+.statusblock h20 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock1 h20 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock2 h20 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
+.statusblock3 h20 {font-size: .8em;font-weight: normal;font-family: quicksand,sans-serif;}
 .statusblock1 {width:100%;margin-left:unset;}
 .statusblock2 {width:100%;margin-left:unset;}
 .statusblock3 {width:100%;margin-left:unset;}

@@ -359,6 +359,8 @@ $current.dateTime
           <img src="daywinddir.png?342033402"   alt="Hi Wind" />
           <img src="dayinside.png?342033402"    alt="Inside" />
           <img src="daywindvec.png?342033402"   alt="Wind Vector" />
+	  <img src="https://weather.stmichaels.school/sat24.php?image=visual5hdcomplete" alt="Sun & Clouds">
+	  <img src="https://weather.stmichaels.school/sat24.php?image=rainTMC" alt="Rain">
           #if $day.radiation.has_data
           <img src="dayradiation.png?342033402" alt="Radiation" />
           #end if

@@ -107,7 +107,12 @@ html {min-height: 100%;}
         window.location=url;
       }
       setTimeout(function() { window.location.reload(true); }, 300000);
-    </script>
+document.addEventListener("visibilitychange", function() {
+  if (document.visibilityState === 'visible') {
+    window.location.reload(true);
+  }
+});
+</script>
 	<title>St. Michael's School - Weather Station</title>
 </head>
 

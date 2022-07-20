@@ -72,7 +72,7 @@ input[type=password], input[type=text], textarea{font-size: 24px;line-height: 1.
 .statusblock2{width:604px;margin-left:5px;}
 .statusblock3{width:calc(100% - 1057px);margin-left:5px;}
 }
-@media only screen and (min-width: 1600px) {
+@media only screen and (min-width: 1641px) {
 .statusblock1{width:425px;}
 .statusblock2{width:912px;margin-left:5px;}
 .statusblock3{width:calc(100% - 1366px);margin-left:5px;}

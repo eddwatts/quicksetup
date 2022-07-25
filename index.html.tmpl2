@@ -348,25 +348,25 @@ $current.dateTime
         #end if
 </div>
 <div class="statusblock2" style="background-color:#7AA5D1;" id="Charts"><h2>Charts</h2>	
-          <img src="daytempdew.png?342033402"   alt="temperatures" />
-          <img src="daytempchill.png?342032402" alt="heatchill" />
-          <img src="dayhumidity.png?342033402"  alt="outside humidity" />
-          <img src="dayrain.png?342033402"      alt="rain" />
-          <img src="daywind.png?342033402"      alt="wind" />
-          <img src="daybarometer.png?342032402" alt="barometer"/>
-          <img src="daywinddir.png?342033402"   alt="Hi Wind" />
-          <img src="dayinside.png?342033402"    alt="Inside" />
-          <img src="daywindvec.png?342033402"   alt="Wind Vector" />
-	  <img src="https://weather.stmichaels.school/sat24.php?image=visual5hdcomplete" alt="Sun & Clouds">
-	  <img src="https://weather.stmichaels.school/sat24.php?image=rainTMC" alt="Rain">
+          <img src="daytempdew.png?342033402"   alt="temperatures" width="300" height="180" />
+          <img src="daytempchill.png?342032402" alt="heatchill" width="300" height="180" />
+          <img src="dayhumidity.png?342033402"  alt="outside humidity" width="300" height="180" />
+          <img src="dayrain.png?342033402"      alt="rain" width="300" height="180" />
+          <img src="daywind.png?342033402"      alt="wind" width="300" height="180" />
+          <img src="daybarometer.png?342032402" alt="barometer" width="300" height="180" />
+          <img src="daywinddir.png?342033402"   alt="Hi Wind" width="300" height="180" />
+          <img src="dayinside.png?342033402"    alt="Inside" width="300" height="180" />
+          <img src="daywindvec.png?342033402"   alt="Wind Vector" width="300" height="180" />
+	  <img src="https://weather.stmichaels.school/sat24.php?image=visual5hdcomplete" alt="Sun & Clouds" width="300" height="180">
+	  <img src="https://weather.stmichaels.school/sat24.php?image=rainTMC" width="300" height="180" alt="Rain">
           #if $day.radiation.has_data
-          <img src="dayradiation.png?342033402" alt="Radiation" />
+          <img src="dayradiation.png?342033402" alt="Radiation" width="300" height="180" />
           #end if
           #if $day.UV.has_data
-          <img src="dayuv.png?342038402" alt="UV Index" />
+          <img src="dayuv.png?342038402" alt="UV Index" width="300" height="180" />
           #end if
           #if $day.rxCheckPercent.has_data
-          <img src="dayrx.png?342031402"        alt="day rx percent"/>
+          <img src="dayrx.png?342031402"        alt="day rx percent" width="300" height="180"/>
           #end if
 </div>	
 <div class="statusblock3" style="background-color:#7AA5D1;" id="Abount"><h2>About this weather station</h2>

@@ -106,7 +106,7 @@ html {min-height: 100%;}
 
 <body>
 <div class="adminbar">
-<h1 class="pagetitle"><img src="ProviderLogo/corner.webp" style="height: 45px;vertical-align: middle;padding-right: 5px;">Weather Station</h1>
+<h1 class="pagetitle"><img src="ProviderLogo/corner.webp" width="39" height="45" style="height: 45px;vertical-align: middle;padding-right: 5px;">Weather Station</h1>
 </div>
 <div class="mainpage">
 <div class="statusblock" style="background-color:#7AA5D1;font-size: x-large;text-align: center;border-color: #000;" id="Current1">
@@ -434,23 +434,23 @@ $current.dateTime
           </table>
 </div>
 <div class="statusblock2" style="background-color:#7AA5D1;" id="Charts"><h2>Weekly Statistics and Plots</h2>
-          <img src="weektempdew.png?342033402" alt="temperatures" />
-          <img src="weektempchill.png?342033402" alt="heatchill" />
-          <img src="weekhumidity.png?342033402"  alt="outside humidity" />
-          <img src="weekrain.png?342033402" alt="rain" />
-          <img src="weekwind.png?342033402" alt="wind" />
-          <img src="weekbarometer.png?342033402" alt="barometer"/>
-          <img src="weekwinddir.png?342033402" alt="Hi Wind" />
-          <img src="weekinside.png?342033402" alt="Inside" />
-          <img src="weekwindvec.png"?342033402 alt="Wind Vector" />
+          <img src="weektempdew.png?342033402" alt="temperatures" width="300" height="180" />
+          <img src="weektempchill.png?342033402" alt="heatchill" width="300" height="180" />
+          <img src="weekhumidity.png?342033402"  alt="outside humidity" width="300" height="180" />
+          <img src="weekrain.png?342033402" alt="rain" width="300" height="180" />
+          <img src="weekwind.png?342033402" alt="wind" width="300" height="180" />
+          <img src="weekbarometer.png?342033402" alt="barometer" width="300" height="180" />
+          <img src="weekwinddir.png?342033402" alt="Hi Wind" width="300" height="180" />
+          <img src="weekinside.png?342033402" alt="Inside" width="300" height="180" />
+          <img src="weekwindvec.png"?342033402 alt="Wind Vector" width="300" height="180" />
           #if $week.radiation.has_data
-          <img src="weekradiation.png?342033402" alt="Radiation" />
+          <img src="weekradiation.png?342033402" alt="Radiation" width="300" height="180" />
           #end if
           #if $week.UV.has_data
-          <img src="weekuv.png?342033402" alt="UV Index" />
+          <img src="weekuv.png?342033402" alt="UV Index" width="300" height="180" />
           #end if
           #if $week.rxCheckPercent.has_data
-          <img src="weekrx.png?342033402" alt="week rx percent"/>
+          <img src="weekrx.png?342033402" alt="week rx percent" width="300" height="180" />
           #end if
 </div>
 <div class="statusblock3" style="background-color:#7AA5D1;text-align: center;" id="Navbar"><h2>Navagation</h2>

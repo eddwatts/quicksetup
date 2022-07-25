@@ -106,7 +106,7 @@ html {min-height: 100%;}
 
 <body>
 <div class="adminbar">
-<h1 class="pagetitle"><img src="ProviderLogo/corner.webp" style="height: 45px;vertical-align: middle;padding-right: 5px;">Weather Station</h1>
+<h1 class="pagetitle"><img src="ProviderLogo/corner.webp" width="39" height="45" style="height: 45px;vertical-align: middle;padding-right: 5px;">Weather Station</h1>
 </div>
 <div class="mainpage">
 <div class="statusblock" style="background-color:#7AA5D1;font-size: x-large;text-align: center;border-color: #000;" id="Current1">
@@ -296,24 +296,24 @@ $current.dateTime
           </table>
 </div>
 <div class="statusblock2" style="background-color:#7AA5D1;" id="Charts"><h2>Yearly Statistics and Plots</h2>
-          <img src="yeartempdew.png?342033402" alt="temperatures" />
-          <img src="yeartempchill.png?342033402" alt="heatchill" />
-          <img src="yearhumidity.png?342033402"  alt="outside humidity" />
-          <img src="yearhilow.png?342033402" alt="Daily highs and lows for the year" title="Daily highs and lows for the year"/>
-          <img src="yearrain.png?342033402" alt="rain" />
-          <img src="yearwind.png?342033402" alt="wind" />
-          <img src="yearbarometer.png?342033402" alt="barometer"/>
-          <img src="yearwinddir.png?342033402" alt="Hi Wind" />
-          <img src="yearinside.png?342033402" alt="Inside" />
-          <img src="yearwindvec.png?342033402" alt="Wind Vector" />
+          <img src="yeartempdew.png?342033402" alt="temperatures" width="300" height="180" />
+          <img src="yeartempchill.png?342033402" alt="heatchill" width="300" height="180" />
+          <img src="yearhumidity.png?342033402"  alt="outside humidity" width="300" height="180" />
+          <img src="yearhilow.png?342033402" alt="Daily highs and lows for the year" title="Daily highs and lows for the year" width="300" height="180"/>
+          <img src="yearrain.png?342033402" alt="rain" width="300" height="180" />
+          <img src="yearwind.png?342033402" alt="wind" width="300" height="180" />
+          <img src="yearbarometer.png?342033402" alt="barometer" width="300" height="180"/>
+          <img src="yearwinddir.png?342033402" alt="Hi Wind" width="300" height="180" />
+          <img src="yearinside.png?342033402" alt="Inside" width="300" height="180" />
+          <img src="yearwindvec.png?342033402" alt="Wind Vector" width="300" height="180" />
           #if $year.radiation.has_data
-          <img src="yearradiation.png?342033402" alt="Radiation" />
+          <img src="yearradiation.png?342033402" alt="Radiation" width="300" height="180" />
           #end if
           #if $year.UV.has_data
-          <img src="yearuv.png?342033402" alt="UV Index" />
+          <img src="yearuv.png?342033402" alt="UV Index" width="300" height="180" />
           #end if
           #if $year.rxCheckPercent.has_data
-          <img src="yearrx.png?342033402" alt="year rx percent"/>
+          <img src="yearrx.png?342033402" alt="year rx percent" width="300" height="180"/>
           #end if
 </div>
 <div class="statusblock3" style="background-color:#7AA5D1;text-align: center;" id="Navbar"><h2>Navagation</h2>

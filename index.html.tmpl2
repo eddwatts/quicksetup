@@ -118,7 +118,7 @@ document.addEventListener("visibilitychange", function() {
 <body>
 <div class="backgrounddiv"></div>
 <div class="adminbar">
-<h1 class="pagetitle"><img src="ProviderLogo/corner.webp" style="height: 45px;vertical-align: middle;padding-right: 5px;">Weather Station</h1>
+<h1 class="pagetitle"><img src="ProviderLogo/corner.webp" width="39" height="45" style="height: 45px;vertical-align: middle;padding-right: 5px;">Weather Station</h1>
 </div>
 <div class="mainpage">
 <div class="statusblock" style="background-color:#7AA5D1;font-size: x-large;text-align: center;border-color: #000;" id="Current1">

@@ -1,11 +1,12 @@
-echo 'dtparam=watchdog=on' | sudo tee --append /boot/config.txt
+echo 'RuntimeWatchdogSec=14' | sudo tee --append /etc/systemd/system.conf
+echo 'ShutdownWatchdogSec=2min' | sudo tee --append /etc/systemd/system.conf
 echo 'dtoverlay=vc4-kms-v3d,cma-128' | sudo tee --append /boot/config.txt
 echo 'disable_camera_led=1' | sudo tee --append /boot/config.txt
 sudo mkdir /mnt/ramdisk
 echo 'tmpfs /mnt/ramdisk tmpfs nodev,nosuid,size=20M 0 0' | sudo tee --append /etc/fstab
 sudo mount -a
 echo '[Unit]' | sudo tee --append /etc/systemd/system/telepotcontrol.service
-echo 'Description=My Script' | sudo tee --append /etc/systemd/system/telepotcontrol.service
+echo 'Description=telepotcontrol' | sudo tee --append /etc/systemd/system/telepotcontrol.service
 echo '' | sudo tee --append /etc/systemd/system/telepotcontrol.service
 echo '[Service]' | sudo tee --append /etc/systemd/system/telepotcontrol.service
 echo 'ExecStart=/usr/bin/python3 /home/telepotcontrol.py' | sudo tee --append /etc/systemd/system/telepotcontrol.service
@@ -13,7 +14,7 @@ echo '' | sudo tee --append /etc/systemd/system/telepotcontrol.service
 echo '[Install]' | sudo tee --append /etc/systemd/system/telepotcontrol.service
 echo 'WantedBy=multi-user.target' | sudo tee --append /etc/systemd/system/telepotcontrol.service
 echo '[Unit]' | sudo tee --append /etc/systemd/system/safeshutdown.service
-echo 'Description=My Script' | sudo tee --append /etc/systemd/system/safeshutdown.service
+echo 'Description=safeshutdown' | sudo tee --append /etc/systemd/system/safeshutdown.service
 echo '' | sudo tee --append /etc/systemd/system/safeshutdown.service
 echo '[Service]' | sudo tee --append /etc/systemd/system/safeshutdown.service
 echo 'ExecStart=/usr/bin/python3 /home/safeshutdown.py' | sudo tee --append /etc/systemd/system/safeshutdown.service
@@ -27,7 +28,7 @@ sudo curl -o "/home/install_pivariety_pkgs.sh" "https://github.com/ArduCAM/Arduc
 chmod +x /home/install_pivariety_pkgs.sh
 
 sudo apt-get update
-sudo apt-get -y install python3-pip watchdog gldriver-test libdrm-amdgpu1 libdrm-nouveau2 libdrm-radeon1 libgl1-mesa-dri libglapi-mesa libllvm11 libsensors-config libsensors5 libvulkan1 libwayland-client0 libx11-xcb1 libxcb-dri3-0 libxcb-present0 libxcb-randr0 libxcb-sync1 libxshmfence1 libz3-4 mesa-vulkan-drivers
+sudo apt-get -y install python3-pip gldriver-test libdrm-amdgpu1 libdrm-nouveau2 libdrm-radeon1 libgl1-mesa-dri libglapi-mesa libllvm11 libsensors-config libsensors5 libvulkan1 libwayland-client0 libx11-xcb1 libxcb-dri3-0 libxcb-present0 libxcb-randr0 libxcb-sync1 libxshmfence1 libz3-4 mesa-vulkan-drivers
 
 
 #/home/install_pivariety_pkgs.sh -p libcamera_dev
@@ -51,20 +52,14 @@ sudo raspi-config nonint do_gldriver G2
 sudo raspi-config nonint do_glamor 0
 
 sudo pip3 -q install telepot twython --upgrade
-echo 'watchdog-device = /dev/watchdog' | sudo tee --append /etc/watchdog.conf
-echo 'watchdog-timeout = 15' | sudo tee --append /etc/watchdog.conf
-echo 'max-load-1 = 24' | sudo tee --append /etc/watchdog.conf
-echo 'interface = wlan0' | sudo tee --append /etc/watchdog.conf
-#echo 'ping = 1.1.1.1' | sudo tee --append /etc/watchdog.conf
-echo 'realtime = yes' | sudo tee --append /etc/watchdog.conf
 
 sudo systemctl start safeshutdown    # Runs the script now
 sudo systemctl enable safeshutdown   # Sets the script to run every boot
-sudo systemctl start telepotcontrol    # Runs the script now
-sudo systemctl enable telepotcontrol   # Sets the script to run every boot
-#sudo systemctl enable watchdog
-#sudo systemctl start watchdog
+#sudo systemctl start telepotcontrol    # Runs the script now
+#sudo systemctl enable telepotcontrol   # Sets the script to run every boot
+
+#systemctl show | grep -i watchdog
+#dmesg | grep watchdog
 
 
-#lsmod | grep wd
-#ls -la /dev/watchdog*
+

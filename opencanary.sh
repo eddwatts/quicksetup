@@ -21,45 +21,45 @@ read -p "password for email: " emailpass
 read -p "alert email: " emailalert
 read -p "type hostname for this device: " hostname
 
-sudo raspi-config nonint do_ssh 0
-sudo raspi-config nonint do_i2c 0
-sudo raspi-config nonint do_boot_wait 0
-sudo raspi-config nonint do_configure_keyboard gb
-sudo raspi-config nonint do_change_timezone Eurpoe/London
-sudo raspi-config nonint do_change_locale en_GB.UTF-8
-sudo raspi-config nonint do_gldriver G2
-sudo raspi-config nonint do_glamor 0
-echo 'dtoverlay=pi3-disable-wifi' | sudo tee --append /boot/config.txt
-echo 'dtoverlay=pi3-disable-bt' | sudo tee --append /boot/config.txt
-echo 'RuntimeWatchdogSec=14' | sudo tee --append /etc/systemd/system.conf
-echo 'ShutdownWatchdogSec=2min' | sudo tee --append /etc/systemd/system.conf
-sudo mkdir /mnt/ramdisk
-echo 'tmpfs /mnt/ramdisk tmpfs nodev,nosuid,size=20M 0 0' | sudo tee --append /etc/fstab
-sudo mount -a
-echo '[Unit]' | sudo tee --append /etc/systemd/system/safeshutdown.service
-echo 'Description=safeshutdown' | sudo tee --append /etc/systemd/system/safeshutdown.service
-echo '' | sudo tee --append /etc/systemd/system/safeshutdown.service
-echo '[Service]' | sudo tee --append /etc/systemd/system/safeshutdown.service
-echo 'ExecStart=/usr/bin/python3 /home/safeshutdown.py' | sudo tee --append /etc/systemd/system/safeshutdown.service
-echo '' | sudo tee --append /etc/systemd/system/safeshutdown.service
-echo '[Install]' | sudo tee --append /etc/systemd/system/safeshutdown.service
-echo 'WantedBy=multi-user.target' | sudo tee --append /etc/systemd/system/safeshutdown.service
-sudo curl -o "/home/safeshutdown.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/safesuntdown.py?id=$RANDOM" -L
-sudo systemctl start safeshutdown    # Runs the script now
-sudo systemctl enable safeshutdown   # Sets the script to run every boot
+//sudo raspi-config nonint do_ssh 0
+//sudo raspi-config nonint do_i2c 0
+//sudo raspi-config nonint do_boot_wait 0
+//sudo raspi-config nonint do_configure_keyboard gb
+//sudo raspi-config nonint do_change_timezone Eurpoe/London
+//sudo raspi-config nonint do_change_locale en_GB.UTF-8
+//sudo raspi-config nonint do_gldriver G2
+//sudo raspi-config nonint do_glamor 0
+//echo 'dtoverlay=pi3-disable-wifi' | sudo tee --append /boot/config.txt
+//echo 'dtoverlay=pi3-disable-bt' | sudo tee --append /boot/config.txt
+//echo 'RuntimeWatchdogSec=14' | sudo tee --append /etc/systemd/system.conf
+//echo 'ShutdownWatchdogSec=2min' | sudo tee --append /etc/systemd/system.conf
+//sudo mkdir /mnt/ramdisk
+//echo 'tmpfs /mnt/ramdisk tmpfs nodev,nosuid,size=20M 0 0' | sudo tee --append /etc/fstab
+//sudo mount -a
+//echo '[Unit]' | sudo tee --append /etc/systemd/system/safeshutdown.service
+//echo 'Description=safeshutdown' | sudo tee --append /etc/systemd/system/safeshutdown.service
+//echo '' | sudo tee --append /etc/systemd/system/safeshutdown.service
+//echo '[Service]' | sudo tee --append /etc/systemd/system/safeshutdown.service
+//echo 'ExecStart=/usr/bin/python3 /home/safeshutdown.py' | sudo tee --append /etc/systemd/system/safeshutdown.service
+//echo '' | sudo tee --append /etc/systemd/system/safeshutdown.service
+//echo '[Install]' | sudo tee --append /etc/systemd/system/safeshutdown.service
+//echo 'WantedBy=multi-user.target' | sudo tee --append /etc/systemd/system/safeshutdown.service
+//sudo curl -o "/home/safeshutdown.py" "https://raw.githubusercontent.com/eddwatts/quicksetup/main/safesuntdown.py?id=$RANDOM" -L
+//sudo systemctl start safeshutdown    # Runs the script now
+//sudo systemctl enable safeshutdown   # Sets the script to run every boot
 
-sudo sed -i 's/console=tty1/console=tty3 loglevel=3 logo.nologo/' /boot/cmdline.txt
-sudo sed -i -e "s/BOOT_UART=0/BOOT_UART=1/" /boot/bootcode.bin
-sudo sed -i 's/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/' /boot/config.txt
-echo 'disable_splash=1' | sudo tee --append /boot/config.txt
-crontab -l >> mycron
-echo "00 05 * * * sudo reboot"' | tee --append mycron
-crontab mycron
-rm mycron
+//sudo sed -i 's/console=tty1/console=tty3 loglevel=3 logo.nologo/' /boot/cmdline.txt
+//sudo sed -i -e "s/BOOT_UART=0/BOOT_UART=1/" /boot/bootcode.bin
+//sudo sed -i 's/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/' /boot/config.txt
+//echo 'disable_splash=1' | sudo tee --append /boot/config.txt
+//crontab -l >> mycron
+//echo "00 05 * * * sudo reboot"' | tee --append mycron
+//crontab mycron
+//rm mycron
 
 sudo sed -ri 's/^Port 22/Port 221234/g' /etc/ssh/sshd_config
 //dell server
-sudo sed -i -e 's/$/ smsc95xx.macaddr=4c:d9:8f:5c:9f:c4/' /boot/cmdline.txt
+//sudo sed -i -e 's/$/ smsc95xx.macaddr=4c:d9:8f:5c:9f:c4/' /boot/cmdline.txt
 //Synology NAS
 //sudo sed -i -e 's/$/ smsc95xx.macaddr=00:11:32:B3:4D:F5/' /boot/cmdline.txt
 
@@ -211,7 +211,7 @@ echo '     }' | sudo tee --append /etc/opencanary/opencanary.conf
 echo ' }' | sudo tee --append /etc/opencanary/opencanary.conf
 
 chostname=$(cat /etc/hostname)
-sudo raspi-config nonint do_hostname $hostname
+//sudo raspi-config nonint do_hostname $hostname
 sudo sed -i "s/$chostname/$hostname/g" /etc/hostname
 sudo sed -i "s/$chostname/$hostname/g" /etc/hosts
 

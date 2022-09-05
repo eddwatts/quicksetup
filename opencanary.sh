@@ -1,6 +1,25 @@
+#!/bin/bash
 //https://github.com/thinkst/opencanary
 //https://www.youtube.com/watch?v=RanpEQBvAY0
 //https://bobmckay.com/i-t-support-networking/hardware/create-a-security-honey-pot-with-opencanary-and-a-raspberry-pi-3-updated-2021/
+
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -t 1 -n 100000 discard 
+read -p "clearing buffer" -t 1 -n 10000 discard
+echo -ne "\033c"
+read -p "Email from: " emailfrom
+read -p "Email login: " emailuser
+read -p "password for email: " emailpass
+read -p "alert email: " emailalert
+read -p "type hostname for this device: " hostname
 
 sudo raspi-config nonint do_ssh 0
 sudo raspi-config nonint do_i2c 0
@@ -29,9 +48,15 @@ sudo curl -o "/home/safeshutdown.py" "https://raw.githubusercontent.com/eddwatts
 sudo systemctl start safeshutdown    # Runs the script now
 sudo systemctl enable safeshutdown   # Sets the script to run every boot
 
-chostname=$(cat /etc/hostname)
-sudo sed -i "s/$chostname/BOWSER/g" /etc/hostname
-sudo sed -i "s/$chostname/BOWSER/g" /etc/hosts
+sudo sed -i 's/console=tty1/console=tty3 loglevel=3 logo.nologo/' /boot/cmdline.txt
+sudo sed -i -e "s/BOOT_UART=0/BOOT_UART=1/" /boot/bootcode.bin
+sudo sed -i 's/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/' /boot/config.txt
+echo 'disable_splash=1' | sudo tee --append /boot/config.txt
+crontab -l >> mycron
+echo "00 05 * * * sudo reboot"' | tee --append mycron
+crontab mycron
+rm mycron
+
 sudo sed -ri 's/^Port 22/Port 221234/g' /etc/ssh/sshd_config
 //dell server
 sudo sed -i -e 's/$/ smsc95xx.macaddr=4c:d9:8f:5c:9f:c4/' /boot/cmdline.txt
@@ -52,9 +77,9 @@ echo '# Gmail' | sudo tee --append /etc/msmtprc
 echo 'account gmail' | sudo tee --append /etc/msmtprc
 echo 'host smtp.gmail.com' | sudo tee --append /etc/msmtprc
 echo 'port 587' | sudo tee --append /etc/msmtprc
-echo 'from username@stmichaelsschool.co.uk' | sudo tee --append /etc/msmtprc
-echo 'user username@stmichaelsschool.co.uk' | sudo tee --append /etc/msmtprc
-echo 'password **your password**' | sudo tee --append /etc/msmtprc
+echo 'from $emailfrom' | sudo tee --append /etc/msmtprc
+echo 'user $emailuser' | sudo tee --append /etc/msmtprc
+echo 'password $emailpass' | sudo tee --append /etc/msmtprc
 echo '' | sudo tee --append /etc/msmtprc
 echo '# Syslog logging with facility LOG_MAIL instead of the default LOG_USER.' | sudo tee --append /etc/msmtprc
 echo 'syslog LOG_MAIL' | sudo tee --append /etc/msmtprc
@@ -70,6 +95,14 @@ echo 'APT::Periodic::Download-Upgradeable-Packages "1";' | sudo tee --append /et
 echo 'APT::Periodic::Unattended-Upgrade "1";' | sudo tee --append /etc/apt/apt.conf.d/02periodic
 echo 'APT::Periodic::AutocleanInterval "1";' | sudo tee --append /etc/apt/apt.conf.d/02periodic
 echo 'APT::Periodic::Verbose "2";' | sudo tee --append /etc/apt/apt.conf.d/02periodic
+
+sudo mkdir /home/backups
+sudo touch /home/backups/testing.txt
+sudo touch /var/log/samba-audit.log
+sudo chown syslog:adm /var/log/samba-audit.log
+echo 'local7.* /var/log/samba-audit.log' | sudo tee --append /etc/rsyslog.conf
+sudo systemctl restart rsyslog
+sudo systemctl restart syslog
 
 echo '[global]' | sudo tee --append /etc/samba/smb.conf
 echo 'workgroup = OFFICVLAN' | sudo tee --append /etc/samba/smb.conf
@@ -119,3 +152,66 @@ echo 'WantedBy=multi-user.target' | sudo tee --append /etc/systemd/system/openca
 sudo systemctl enable opencanary.service
 sudo systemctl start opencanary.service
 sudo unattended-upgrade -d --dry-run
+
+sudo apt install -y ufw
+echo '-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT' | sudo tee --append /etc/ufw/before.rules
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow Samba
+sudo ufw allow 9418
+sudo ufw allow 21
+sudo ufw allow 3306
+sudo ufw allow 22
+sudo ufw allow 6379
+sudo ufw allow 2289
+sudo ufw allow 5060
+sudo ufw allow 161
+sudo ufw allow 123
+sudo ufw allow 69
+sudo ufw allow 8001
+sudo ufw allow 23
+sudo ufw allow 1433
+sudo ufw allow 5000
+sudo ufw allow 221234
+sudo ufw reload
+sudo ufw enable
+sudo ufw status
+sudo sed -i 's/"portscan.enabled": false/"portscan.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"smb.enabled": false/"smb.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"mysql.enabled": false/"mysql.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"ssh.enabled": false/"ssh.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"redis.enabled": false/"redis.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"httpproxy.enabled" : false/"httpproxy.enabled" : true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"git.enabled": false/"git.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"ftp.enabled": false/"ftp.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"http.enabled": false/"http.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"sip.enabled": false/"sip.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"snmp.enabled": false/"snmp.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"ntp.enabled": false/"ntp.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"tftp.enabled": false/"tftp.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"telnet.enabled": false/"telnet.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"mssql.enabled": false/"mssql.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"vnc.enabled": false/"vnc.enabled": true/' /etc/opencanary/opencanary.conf
+echo '    "logger": {' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '    "class" : "PyLogger",' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '    "kwargs" : {' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '        "handlers": {' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '            "SMTP": {' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '                "class": "logging.handlers.SMTPHandler",' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '                "mailhost": ["smtp.gmail.com", 587],' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '                "fromaddr": "$emailfrom",' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '                "toaddrs" : ["$emailalert"],' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '                "subject" : "OpenCanary Alert",' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '                "credentials" : ["$emailuser", "$emailpass"],' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '                "secure" : []' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '             }' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '         }' | sudo tee --append /etc/opencanary/opencanary.conf
+echo '     }' | sudo tee --append /etc/opencanary/opencanary.conf
+echo ' }' | sudo tee --append /etc/opencanary/opencanary.conf
+
+chostname=$(cat /etc/hostname)
+sudo raspi-config nonint do_hostname $hostname
+sudo sed -i "s/$chostname/$hostname/g" /etc/hostname
+sudo sed -i "s/$chostname/$hostname/g" /etc/hosts
+

@@ -53,7 +53,7 @@ read -p "type hostname for this device: " hostname
 //sudo sed -i 's/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/' /boot/config.txt
 //echo 'disable_splash=1' | sudo tee --append /boot/config.txt
 //crontab -l >> mycron
-//echo "00 05 * * * sudo reboot"' | tee --append mycron
+//echo '00 05 * * * sudo reboot' | tee --append mycron
 //crontab mycron
 //rm mycron
 
@@ -88,7 +88,7 @@ echo '# Set a default account' | sudo tee --append /etc/msmtprc
 echo 'account default : gmail' | sudo tee --append /etc/msmtprc
 chmod 600 /etc/msmtprc
 
-sudo curl -o "/etc/apt/apt.conf.d/" https://gitlab.com/cgoff/raspberry-pi-hardening/-/raw/master/unattended-upgrades-config/50unattended-upgrades?inline=false -L
+sudo curl -o "/etc/apt/apt.conf.d/50unattended-upgrades" https://gitlab.com/cgoff/raspberry-pi-hardening/-/raw/master/unattended-upgrades-config/50unattended-upgrades?inline=false -L
 echo 'APT::Periodic::Enable "1";' | sudo tee --append /etc/apt/apt.conf.d/02periodic
 echo 'APT::Periodic::Update-Package-Lists "1";' | sudo tee --append /etc/apt/apt.conf.d/02periodic
 echo 'APT::Periodic::Download-Upgradeable-Packages "1";' | sudo tee --append /etc/apt/apt.conf.d/02periodic

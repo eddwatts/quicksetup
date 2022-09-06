@@ -177,22 +177,22 @@ sudo ufw allow 221234
 sudo ufw reload
 sudo ufw enable
 sudo ufw status
-sudo sed -i 's/"portscan.enabled": false/"portscan.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"smb.enabled": false/"smb.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"mysql.enabled": false/"mysql.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"ssh.enabled": false/"ssh.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"redis.enabled": false/"redis.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"httpproxy.enabled" : false/"httpproxy.enabled" : true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"git.enabled": false/"git.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"ftp.enabled": false/"ftp.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"http.enabled": false/"http.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"sip.enabled": false/"sip.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"snmp.enabled": false/"snmp.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"ntp.enabled": false/"ntp.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"tftp.enabled": false/"tftp.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"telnet.enabled": false/"telnet.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"mssql.enabled": false/"mssql.enabled": true/' /etc/opencanary/opencanary.conf
-sudo sed -i 's/"vnc.enabled": false/"vnc.enabled": true/' /etc/opencanary/opencanary.conf
+sudo sed -i 's/"portscan.enabled": false/"portscan.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"smb.enabled": false/"smb.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"mysql.enabled": false/"mysql.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"ssh.enabled": false/"ssh.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"redis.enabled": false/"redis.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"httpproxy.enabled" : false/"httpproxy.enabled" : true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"git.enabled": false/"git.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"ftp.enabled": false/"ftp.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"http.enabled": false/"http.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"sip.enabled": false/"sip.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"snmp.enabled": false/"snmp.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"ntp.enabled": false/"ntp.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"tftp.enabled": false/"tftp.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"telnet.enabled": false/"telnet.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"mssql.enabled": false/"mssql.enabled": true/' /etc/opencanaryd/opencanary.conf
+sudo sed -i 's/"vnc.enabled": false/"vnc.enabled": true/' /etc/opencanaryd/opencanary.conf
 echo '    "logger": {' | sudo tee --append /etc/opencanary/opencanary.conf
 echo '    "class" : "PyLogger",' | sudo tee --append /etc/opencanary/opencanary.conf
 echo '    "kwargs" : {' | sudo tee --append /etc/opencanary/opencanary.conf

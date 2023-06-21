@@ -1,0 +1,12 @@
+[Service]
+ExecStart=~/safeshutdown.py
+WorkingDirectory=~/
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=safeshutdown
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
